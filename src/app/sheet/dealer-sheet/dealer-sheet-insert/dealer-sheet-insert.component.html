@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="main-contaniner-panel box-shadow employess-panel">
+      <div class="responsive-div">
+        <div class="div-close-poupup top-bg-color">
+            <div class="header-tag">
+                <h3>Entry Sheet of Dealer</h3>
+            </div>
+            <div class="button-Add-Reset">
+            <button type="submit" class="submit-cls">Submit</button>
+            <button type="submit"  class="reset-cls">Reset</button>
+              <button type="submit" class="back-btn" [routerLink]="['/Home']" routerLinkActive="router-link-active">Back</button>
+            </div>
+        </div>
+        <div class="grid-col">
+            <div class="row-responsive">
+                <div class="col-sm">
+                   <label for="depot_name"> Depot Name </label>
+                    <select id="depot_name" class="depot_name"></select>
+                </div>
+            </div>
+            <div class="row-responsive">
+                <div class="col-sm">
+                   <label for="Dealer_Name"> Dealer Name </label>
+                   <input type="text" id="Dealer_Name" name="Outward_depot_code_1" class="input-text-color" placeholder="Enter Dealer Name">
+                </div>
+            </div>
+            <div class="row-responsive">
+                <div class="col-sm">
+                   <label for="Dealer_Code"> Dealer Code</label>
+                   <input type="number" id="Dealer_Code" name="Dealer_Code" class="input-text-color" placeholder="Enter Dealer Code">
+                </div>
+            </div>
+            <div class="row-responsive">
+                <div class="col-sm">
+                  <label for="depot_code"> Dealer Email Id</label>
+                  <input type="email" id="email_id" name="depot_code" class="input-text-color" placeholder="Enter Dealer Email Id">
+                </div>
+            </div>
+            <div class="row-responsive">
+                <div class="col-sm">
+                  <label for="depot_code">Contact Number</label>
+                    <input type="text" id="contact_number" class="input-text-color" name="contact_number" placeholder="Enter Contact Number">
+                </div>
+            </div>
+
+            <div class="row-responsive">
+                <div class="col-sm">
+                   <label for="depot_code">City</label>
+                   <input type="text" id="CityName" class="input-text-color" name="CityName" placeholder="Enter City Name">
+                </div>
+            </div>
+            <div class="row-responsive">
+                <div class="col-sm">
+                   <label for="depot_code">Sate</label>
+                   <select name="STATE_ID" id="STATE_ID" class="input-text-color"></select>
+                </div>
+            </div>
+            <div class="row-responsive">
+                <div class="col-sm">
+                   <label for="depot_code">Pincode</label>
+                   <input name="STATE_ID" id="PNCODE_ID" class="input-text-color">
+                </div>
+            </div>
+            <div class="row-responsive height">
+                <div class="col-sm">
+                   <label for="depot_code">Address</label>
+                   <textarea id="Address_ID" class="input-text-color" name="Address_ID" rows="4" cols="50">
+                  </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

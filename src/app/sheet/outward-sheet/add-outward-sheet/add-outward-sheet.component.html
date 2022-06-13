@@ -1,0 +1,223 @@
+<div class="main-contaniner-panel animation-class-open box-shadow">
+  <div class="responsive-div">
+    <div class="div-close-poupup top-bg-color">
+      <div class="header-tag">
+        <h1>This is Outward Entry Sheet</h1>
+      </div>
+      <div class="button-Add-Reset">
+        <button type="submit" class="submit-cls"
+          (click)="LoadNextPanel($event,{Depot_Code:depot_code,Entry_Date:date_entry,
+                    Dealer_Code:dealerCode,Dealer_Name:dealerName,
+                    InvoiceNumber:invoiceNumber,InvoiceDate:invoiceDate,InvoiceQty:invoiceQty,
+                    Grade:grade,Unloading:unloading,Transphipment:transphipment,
+                    Diversion:diversion,VehicleNumber:vehicleNumber,DriverName:driverName,DriverMobileNumber:driverMobileNumber,
+                    InTimeOfTruck:inTimeOfTruck,OutTimeOfTruck:outTimeOfTruck,TruckArrangedBy:truckArrangedBy})">Next</button>
+        <button type="submit" class="reset-cls" (click)="ResetData({Depot_Code:depot_code.value='Select Depot',
+                  Entry_Date:date_entry.value='',
+                  InvoiceNumber:invoiceNumber.value='',InvoiceDate:invoiceDate.value='',
+                  InvoiceQty:invoiceQty.value='',
+                  Grade:grade.value='Select Option',
+                  Unloading:unloading.value='',Transphipment:transphipment.value='',
+                  Diversion:diversion.value='',
+                  VehicleNumber:vehicleNumber.value='',DriverName:driverName.value='',
+                  DriverMobileNumber:driverMobileNumber.value='',
+                  InTimeOfTruck:inTimeOfTruck.value='',
+                  OutTimeOfTruck:outTimeOfTruck.value=''})">Reset</button>
+      </div>
+    </div>
+    <div class="grid-col">
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="depot_code">Choose Depot Code</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="text" id="depot_code" name="depot_code" #depot_code [value]="this.DATA!=null?this.DATA['Depot_Code']:'Select Option'" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="entryDate">Invoice Date :</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input (change)="TDate('#invoiceDate');" type="date" name="invoiceDate" id="invoiceDate" #invoiceDate
+              [value]="this.DATA!=null?this.DATA['InvoiceDate']:''" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="Entry Date">Entry Date of Form:</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input id="date" disabled type="text" name="date" #date_entry [value]="this.DATA!=null?this.DATA['Entry_Date']:this.CURRENT_DATE">
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="dealerCode">Dealer Code</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <div class="col-55">
+              <input type="text" name="dealerCode" id="dealerCode" #dealerCode
+                [value]="this.DATA!=null?this.DATA['Dealer_Code']:''" required>
+              <button class="load-dealer-page">Add</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="dealerName">Dealer Name</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="text" name="dealerName" id="dealerName" #dealerName
+              [value]="this.DATA!=null?this.DATA['Dealer_Name']:''" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="invoiceNumber">Invoice No.</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="number" name="invoiceNumber" id="invoiceNumber" title="Ten characters only"
+              pattern="[A-Za-z,0-9]{10}" maxlength="10" minlength="10" #invoiceNumber [value]="this.DATA!=null?this.DATA['InvoiceNumber']:''"
+              required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="invoiceQty">Invoice Qty(in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="Number" name="invoiceQty" id="invoiceQty" #invoiceQty
+              [value]="this.DATA!=null?this.DATA['InvoiceQty']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="grade">Grade</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="text" id="grade" #grade [value]="this.DATA!=null?this.DATA['Grade']:'Select option'" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="unloading">loading (in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="Number" name="unloading" id="unloading" #unloading
+              [value]="this.DATA!=null?this.DATA['Unloading']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="transphipment">Transphipment(in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="Number" name="transphipment" id="transphipment" #transphipment
+              [value]="this.DATA!=null?this.DATA['Transphipment']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="diversion">Diversion(in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="Number" name="diversion" id="diversion" #diversion
+              [value]="this.DATA!=null?this.DATA['Diversion']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="truckArrangedBy">Truck arranged by</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <select name="truckArrangedBy" id="truckArrangedBy" #truckArrangedBy
+              [value]="this.DATA!=null?this.DATA['TruckArrangedBy']:'Select Option'">
+              <option value="Select Option">Select Option</option>
+              <option value="plantTruck">Plant Truck</option>
+              <option value="CFA">CFA</option>
+              <option value="Dealer">Dealer</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="vehicleNumber">Vehicle No.</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="text" name="vehicleNumber" id="vehicleNumber" #vehicleNumber
+              [value]="this.DATA!=null?this.DATA['VehicleNumber']:''" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="driverName">Driver Name </label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="text" name="driverName" id="driverName" #driverName
+              [value]="this.DATA!=null?this.DATA['DriverName']:''" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="driverMobileNumber">Driver Mobile no.</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input name="driverMobileNumber" id="driverMobileNumber" type="text" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength="10" minlength="10" #driverMobileNumber [value]="this.DATA!=null?this.DATA['DriverMobileNumber']:''" required required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="inTimeOfTruck">In time of Truck</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="time" name="inTimeOfTruck" id="inTimeOfTruck" #inTimeOfTruck
+              [value]="this.DATA!=null?this.DATA['InTimeOfTruck']:'--:-- --'" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="outTimeOfTruck">Out Time of Truck</label></div>
+        </div>
+        <div class="row">
+          <div class="col-75">
+            <input type="time" name="outTimeOfTruck" id="outTimeOfTruck" #outTimeOfTruck
+              [value]="this.DATA!=null?this.DATA['OutTimeOfTruck']:'--:-- --'" required>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,87 @@
+<div class="content-div">
+  <div class="content-html">
+    <h5>New Stock Table</h5>
+  </div>
+  <div class="print-table-div">
+    <button type="submit" class="btn-pdf-xls">.Pdf</button>
+    <button type="submit" class="btn-pdf-xls">.XLS</button>
+  </div>
+</div>
+<div class="table-responsive-main table-bg-color">
+  <div class="table-header"
+    *ngIf="this.service.NEW_STOCK_SHEET_DATA_2!=null && this.service.NEW_STOCK_SHEET_DATA_2!=undefined">
+    <div class="col-100">
+      <table class="table-responsive">
+        <thead class="height-25">
+          <tr>
+            <th class="col2 col-15">SR.NO.</th>
+            <th class="col-20">DATE</th>
+            <th class="col-20">NORMAL BAG SUM</th>
+            <th class="col-20">DSP BAG SUM</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="inside-tr h">
+            <th class="col-2"></th>
+            <th class="col-2"></th>
+            <th class="col-2"></th>
+            <th class="col-2"></th>
+            <th class="col-2"></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-100 width-500">
+      <table class="table-responsive">
+        <thead class="height-25">
+          <tr>
+            <th class="col25 top-margin">NORMAL BAGS</th>
+          </tr>
+        </thead>
+        <tbody id="NEW_STOCK_TABLE_TBODY_2_TAB_1">
+          <tr class="inside-tr">
+            <th class="col-4">TRANSHIPMENT AMOUNT</th>
+            <th class="col-4">LOADING AMOUNT</th>
+            <th class="col-4">UNLOADING AMOUNT</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-100 width-500">
+      <table class="table-responsive">
+        <thead class="height-25">
+          <tr>
+            <th class="col25 top-margin">DSP BAGS</th>
+          </tr>
+        </thead>
+        <tbody id="NEW_STOCK_TABLE_TBODY_2_TAB_1">
+          <tr class="inside-tr">
+            <th class="col-4">TRANSHIPMENT AMOUNT</th>
+            <th class="col-4">LOADING AMOUNT</th>
+            <th class="col-4">UNLOADING AMOUNT</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-100">
+      <table class="table-responsive">
+        <thead class="height-25">
+          <tr>
+            <th class="col-20">HANDLING CHARGE</th>
+            <th class="col-20">FIXED COST</th>
+            <th class="col-20">AMOUNT PAYABLE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="inside-tr h">
+            <th class="col-2"></th>
+            <th class="col-2"></th>
+            <th class="col-2"></th>
+            <th class="col-2"></th>
+            <th class="col-2"></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

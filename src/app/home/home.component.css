@@ -1,0 +1,188 @@
+.pager-loader {
+  display: flex;
+  padding: 20px;
+  justify-items: center;
+  align-items: center;
+  margin: auto;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin: auto;
+  margin-top: -29px !important;
+  margin-bottom: 0 !important;
+  margin-left: 20px;
+}
+
+h6 {
+  font-size: 1rem;
+  margin: auto;
+  margin-top: -29px !important;
+  margin-bottom: 0 !important;
+  margin-right: 20px;
+}
+
+.card-footer {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.active {
+  background-color: #f7f0f0;
+  color: black !important;
+  border-radius: 0px;
+}
+
+.active1 {
+  background-color: #438d67;
+  color: black !important;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  outline: none;
+  border: none;
+  background: transparent !important;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  outline: none;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #82807f;
+  border-radius: 10px;
+  border: 0;
+  -webkit-box-shadow: inset 0 0 0 transparent !important;
+  -webkit-border-radius: 10px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: color, background-color 9999s ease-out !important;
+  -webkit-transition-delay: 9999s !important;
+}
+
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-transition: color, background-color 9999s ease-out !important;
+  -webkit-transition-delay: 9999s !important;
+}
+
+.footer {
+  position: relative;
+  bottom: 15px;
+}
+
+#nav_content {
+  display: flex;
+    flex-direction: column;
+    min-width: 0;
+    flex-grow: 1;
+    height: 93vh;
+}
+
+.card-panel {
+  height: 83vh;
+  overflow: auto;
+  margin: auto;
+  margin-top: -35px;
+  border-radius: 10px;
+  margin-bottom: 35px;
+  background-color: white;
+  width: 95%;
+  box-shadow: 0px 0px 7px 2px #a2a2a2;
+  padding: 30px;
+}
+
+.card-panel .mb-4 {
+  margin-bottom: 0 !important;
+  height: 100%;
+  box-shadow: 1px 2px 3px 2px #c1c1c1;
+}
+
+.dasboard-card .card-body {
+  background: #004d7a !important;
+  color: #ffffff;
+}
+
+.right-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 !important;
+}
+
+.main-class {
+  margin-top: 0;
+  background-color: white;
+  padding: 0;
+}
+
+.nav-title {
+  width: 100%;
+  margin: auto;
+  margin-left: 0;
+  padding-left: 30px;
+  margin-top: 0px !important;
+  background-color: #2d495a;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.col-xl-4 {
+  padding: 10px;
+}
+
+
+@media screen and (max-width: 680px) {
+  .card-panel .mt-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .right-div {
+    margin-top: 0px;
+  }
+  .nav-title {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  .card-panel .mt-4 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .right-div {
+    margin-top: 0px;
+  }
+
+  .nav-title {
+    width: 100%;
+  }
+}
+
+.card-body h5 {
+  font-size: 1.2rem;
+}
+

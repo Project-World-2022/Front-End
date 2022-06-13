@@ -1,0 +1,58 @@
+.employess-panel {
+  background-color: #fefefe;
+  border-radius: 10px;
+}
+.responsive-div {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  gap: 0;
+}
+
+.row-responsive {
+  height: 90px !important;
+}
+
+.height{
+  height: 200px !important;
+}
+.div-close-poupup {
+  height: 56px !important;
+  padding: 0 !important;
+}
+
+.employess-panel .responsive-div textarea {
+  height: 110px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+
+.password-input-checked {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
+
+.password-input-checked .icon-hide-show {
+  font-size: 20px;
+  margin: auto;
+  margin-left: -40px;
+  cursor: pointer;
+}
+
+.button-Add-Reset {
+  width: 30%;
+}
+
+@media only screen and (max-width: 890px){
+.button-Add-Reset {
+    width: 70% !important;
+}
+}

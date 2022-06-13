@@ -1,0 +1,51 @@
+.responsive-div-2 {
+    width: 500px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    margin: auto;
+    background-color: white;
+    box-shadow: 0px 5px 3px 2px #3c81a9;
+}
+.container-div {
+    width: 100%;
+}
+
+.row-responsive {
+    display: grid;
+    width: 100%;
+    flex-direction: row;
+    padding: 10px;
+    grid-template-columns: 20% 80%;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.option-panel-daily-sheet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    gap: 10px;
+}
+
+.option-panel-daily-sheet button {
+    width: 90%;
+    height: 50px;
+    background-color: #71509c;
+    outline: none;
+    border: none;
+    margin: auto;
+    border-radius: 10px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+}
+
+.option-panel-daily-sheet button:hover {
+    box-shadow: 0px 3px 3px 2px violet;
+}

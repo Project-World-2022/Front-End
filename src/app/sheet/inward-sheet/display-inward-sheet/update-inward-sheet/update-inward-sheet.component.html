@@ -1,0 +1,293 @@
+<div class="main-contaniner-panel animation-class-open box-shadow">
+  <div class="responsive-div">
+    <div class="div-close-poupup top-bg-color">
+      <div class="header-tag">
+        <h1>This is Inward Data Update Sheet</h1>
+      </div>
+      <div class="button-Add-Reset">
+        <button type="submit" class="back-btn" (click)="backNavigate()">Back</button>
+        <button type="submit" class="submit-cls"
+          (click)="SumbitData($event,{Depot_Code:depot_code,Entry_Date:date_entry,SourcePlant:sourcePlant,
+                          InvoiceNumber:invoiceNumber,InvoiceDate:invoiceDate,BillingTimeOfPlant:billingTimeOfPlant,ArrivalDateOfTruck:arrivalDateOfTruck,InvoiceQty:invoiceQty,
+                          Grade:grade,CutAndTorn:cutAndTorn,Shortage:shortage,GoodStock:goodStock,Unloading:unloading,Transphipment:transphipment,
+                          Diversion:diversion,TransporterCompany:transporterCompany,VehicleNumber:vehicleNumber,DriverName:driverName,DriverMobileNumber:driverMobileNumber,
+                          reasonForDelay:reasonForDelay,InTimeOfTruck:inTimeOfTruck,OutTimeOfTruck:outTimeOfTruck})">Update</button>
+      </div>
+    </div>
+    <div class="grid-col">
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="depot_code">Depot Code</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input type="text" id="depot_code" name="depot_code" #depot_code [value]="this.DATA!=null?this.DATA['depot_code']:'Select Option'" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="Entry Date">Entry Date of Form</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  id="entryDate" type="text" name="date" #date_entry [value]="this.DATA!=null?this.DATA['entryDate']:''">
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25">
+            <label for="sourcePlant">Source Plant</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+           <input type="text" id="sourcePlant" #sourcePlant [value]="this.DATA!=null?this.DATA['particulars']:''" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="invoiceNumber">Plant Invoice No.</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="text"  name="invoiceNumber" id="invoiceNumber" title="Ten characters only" maxlength="10" minlength="10"
+              pattern="[A-Za-z,0-9]{10}" #invoiceNumber [value]="this.DATA!=null?this.DATA['invoiceNumber']:''"
+              required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="invoiceDate">Plant Invoice Date</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="text"  name="invoiceDate"
+              id="invoiceDate" #invoiceDate [value]="this.DATA!=null?this.DATA['invoiceDate']:''" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="billingTimeOfPlant">Billing time of Plant</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="text"  name="billingTimeOfPlant" id="billingTimeOfPlant"
+              #billingTimeOfPlant [value]="this.DATA!=null?this.DATA['billingtimeofplant']:''" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="arrivalDateOfTruck">Arrival Date of Truck</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="text"  name="arrivalDateOfTruck"
+              id="arrivalDateOfTruck" #arrivalDateOfTruck [value]="this.DATA!=null?this.DATA['arrivalDateOfTruck']:''" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="invoiceQty">Invoice Qty(in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="Number"  name="invoiceQty" id="invoiceQty"
+            [value]="this.DATA!=null?this.DATA['invoiceQty']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            #invoiceQty required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="grade">Grade</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input type="text" id="grade" #grade [value]="this.DATA!=null?this.DATA['grade']:'Select option'" required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="cutAndTorn">Cut & Torn(in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="Number"  name="cutAndTorn" id="cutAndTorn"
+            [value]="this.DATA!=null?this.DATA['cutAndTorn']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            #cutAndTorn required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="shortage">Shortage(in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="Number"  name="shortage" id="shortage"
+            [value]="this.DATA!=null?this.DATA['shortage']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            #shortage required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="goodStock">Good Stock(in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="Number"  name="goodStock" id="goodStock"
+            [value]="this.DATA!=null?this.DATA['goodStock']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            #goodStock required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="unloading">Unloading (in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="Number"  name="unloading" id="unloading"
+            [value]="this.DATA!=null?this.DATA['unloading']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            #unloading required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="transphipment">Transphipment(in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="Number"  name="transphipment" id="transphipment"
+            [value]="this.DATA!=null?this.DATA['transphipment']:''"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+              #transphipment required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="diversion">Diversion(in Bags)</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="Number"  name="diversion" id="diversion"
+            [value]="this.DATA!=null?this.DATA['diversion']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            #diversion required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="transporterCompany">Transporter Company</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input type="text" id="transporterCompany" #transporterCompany [value]="this.DATA!=null?this.DATA['transporterCompany']:''">
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="vehicleNumber">Vehicle No.</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="text"  name="vehicleNumber"
+            [value]="this.DATA!=null?this.DATA['vehicleNumber']:''"
+            id="vehicleNumber" #vehicleNumber required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="driverName ">Driver Name </label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="text"  name="driverName"
+            [value]="this.DATA!=null?this.DATA['driverName']:''"
+            id="driverName" #driverName required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="driverMobileNumber">Driver Mobile no.</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="phone"  name="driverMobileNumber"
+            [value]="this.DATA!=null?this.DATA['driverMobileNumber']:''"
+            id="driverMobileNumber" maxlength="10" min="10" pattern="[1-9]{1}[0-9]{9}" #driverMobileNumber required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="reasonForDelay">Reason for Delay/Normal Time</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="text"  name="reasonForDelay"
+            [value]="this.DATA!=null?this.DATA['reasonForDelay']:''"
+            id="reasonForDelay" #reasonForDelay required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="inTimeOfTruck">In time of Truck</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="text"  name="inTimeOfTruck"
+            [value]="this.DATA!=null?this.DATA['inTimeOfTruck']:''"
+            id="inTimeOfTruck" #inTimeOfTruck required>
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+          <div class="col-25"><label for="outTimeOfTruck">Out Time of Truck</label></div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <input  type="text"  name="outTimeOfTruck"
+            [value]="this.DATA!=null?this.DATA['outTimeOfTruck']:''"
+            id="outTimeOfTruck" #outTimeOfTruck >
+          </div>
+        </div>
+      </div>
+      <div class="row-responsive">
+        <div class="row">
+            <div class="col-25"><label for="halt-hour">Halt Hour</label></div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <input type="text"  name="halt-hour" id="haltHour" >
+            </div>
+        </div>
+    </div>
+    <div class="row-responsive">
+        <div class="row">
+            <div class="col-25"><label for="clearDateOfTruck">clear Date Of Truck</label></div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <input type="text" class="clearDateOfTruck" name="clearDateOfTruck" id="clearDateOfTruck" >
+            </div>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

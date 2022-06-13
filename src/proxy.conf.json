@@ -1,0 +1,9 @@
+{
+  "./": {
+      "target": ["`http://localhost:3000`",
+        "`http://localhost:4200`",
+        "https://www.theforesite.in",
+        "http://www.theforesite.in:3000/"],
+      "secure": false
+  }
+}

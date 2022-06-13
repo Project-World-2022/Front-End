@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main-contaniner-panel box-shadow">
+    <div class="div-close-poupup top-bg-color">
+      <div class="header-tag">
+        <h1 class="left-padding">This Page is Correction OverView (Inward/Outward) Table</h1>
+      </div>
+      <div class="button-Add-Reset">
+        <button type="submit" class="back-btn" [routerLink]="['/Home']" routerLinkActive="router-link-active">Back</button>
+      </div>
+    </div>
+    <div class="over-flow-panel">
+      <div class="date-selector-panel box-shadow">
+        <div class="input">
+          <div class="date-lable-input">
+            <label class="heading-lable">Select Start Date : </label>
+            <input type="date" class="start-date-input" id="start-date-input" (change)="TDate()" #start_date [value]="this.DATA!=null?this.DATA['Start_Date']:''">
+          </div>
+          <div class="date-lable-input">
+            <label class="heading-lable">Select End Date : </label>
+            <input type="date" class="end-date-input" id="end-date-input" (change)="TDate()" #end_date [value]="this.DATA!=null?this.DATA['End_Date']:''">
+          </div>
+          <div class="date-lable-input">
+            <label for="checked-all" class="heading-lable">Data View Types</label>
+            <select id="select-option-data-view" class="select-option-data-view" #select_view_type_1 [value]="this.DATA!=null?this.DATA['Select_View_Type_1']:''">
+              <option value="Select View Types">Select View Types</option>
+              <option value="All">All</option>
+              <option value="Depot Name">Depot Name</option>
+            </select>
+          </div>
+          <div class="date-lable-input">
+            <label for="checked-all" class="heading-lable">Data View Types 2</label>
+            <select id="select-option-inward-outward-view" class="select-option-data-view" #select_view_type_2 [value]="this.DATA!=null?this.DATA['Select_View_Type_2']:''" (change)="visiblityChanged(select_view_type_2.value)">
+              <option value="Select View Types">Select View Types</option>
+              <option value="Inward">Inward</option>
+              <option value="Outward">Outward</option>
+            </select>
+          </div>
+          <div class="date-lable-input">
+            <label class="heading-lable">Depot Name </label>
+            <select id="depot-code-select" class="depot-code-select" #select_depot>
+              <option value="Select Depot">Select Depot</option>
+              <option [value]="item" *ngFor="let item of this.DEPOT_ALL let i=index">{{item}}</option>
+            </select>
+          </div>
+
+          <div class="button-div">
+            <button class="search-btn" (click)="LoadTableData($event,{Start_Date:start_date.value,End_Date:end_date.value,
+              Depot_Name:select_depot.value,Select_View_Type_1:select_view_type_1.value,
+              Select_View_Type_2:select_view_type_2.value})">Show</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="show-select-value box-shadow">
+        <label  class="START_DATE"></label>
+        <label  class="END_DATE"></label>
+        <label  class="DEPOT_NAME"></label>
+        <label  class="DEPOT_CODE"></label>
+        <label  class="SELECT_VIEW_TYPES-1"></label>
+        <label  class="SELECT_VIEW_TYPES-2"></label>
+      </div>
+      <div class="table-loader-all">
+        <app-correction-report-table [class]=" this.service.VIEW_SHOW_HIDE==false?'show':'hide'"></app-correction-report-table>
+        <app-correction-report-table2 [class]=" this.service.VIEW_SHOW_HIDE==true?'show':'hide'"></app-correction-report-table2>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

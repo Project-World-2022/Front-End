@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="content-div">
+        <div class="content-html">
+            <h5>Summary Table</h5>
+        </div>
+        <div class="print-table-div">
+            <button type="submit" onclick="generatepdf('helllo','#ALL_HEADER_DIV','#TABLE_TBODY',8,[]);">.Pdf</button>
+            <button type="submit" onclick="downlaodxls('helllo','#ALL_HEADER_DIV','#TABLE_TBODY',[])">.XLS</button>
+        </div>
+    </div>
+
+    <div class="stock-sheet-table-panel-2 table-bg-color">
+            <table class="table-responsive" id="ALL_HEADER_DIV">
+                <thead>
+                    <tr>
+                        <th class="col2">Sr.No.</th>
+                        <th class="col2">Entry_Date</th>
+                        <th class="col1">Record</th>
+                        <th class="col1">Particulars</th>
+                        <th class="col1">Invoice Number</th>
+                        <th class="col1">Invoice_Date</th>
+                        <th class="col1">Grade</th>
+                        <th class="col1">InvoiceQty</th>
+                        <th class="col1">VehicleNo.</th>
+                        <th class="col1">Depot Code</th>
+                        <th class="col1">Emp ID</th>
+                        <th class="col1">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of this.service.NEW_STOCK_SHEET_DATA let i=index">
+                    <td class="col1">{{(i+1)}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['entryDate']}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['record']}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['particulars']}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['invoiceNumber']}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['invoiceDate']}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['grade']}}</td>
+                    <td class="col1">{{this.service.ParseFloat(this.service.NEW_STOCK_SHEET_DATA[i]['invoiceQty'])}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['vehicleNumber']}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['depot_code']}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['emp_id']}}</td>
+                    <td class="col1">{{this.service.NEW_STOCK_SHEET_DATA[i]['comments']}}</td>
+                  </tr>
+                </tbody>
+            </table>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="print-table-div">
+        <button type="submit">.pdf</button>
+        <button type="submit" class="XLS_BUTTON">.xls</button>
+    </div>
+    <div class="table-panel-controller table-bg-color">
+        <div class="HeaderDIV">
+            <table class="table-responsive" id="OUTER_TABLE">
+                <thead>
+                    <tr>
+                        <!-- total column is 24  -->
+                        <th class="col1">Action</th>
+                        <th class="col1">Sr.No.</th>
+                        <th class="col1">Entry_Date</th>
+                        <th class="col1">Dealer Name</th>
+                        <th class="col1">Dealer Code</th>
+                        <th class="col1">Invoice_No.</th>
+                        <th class="col1">Invoice_Date</th>
+                        <th class="col1">InvoiceQty (Ton)</th>
+                        <th class="col1">Grade</th>
+                        <th class="col1">Loading (Ton)</th>
+                        <th class="col1">Transhipment (Ton)</th>
+                        <th class="col1">diversion (Ton)</th>
+                        <th class="col1">TRUCK_ARRENGED_BY</th>
+                        <th class="col1">VehicleNo.</th>
+                        <th class="col1">DriveName</th>
+                        <th class="col1">DriverMob.</th>
+                        <th class="col1">InTime</th>
+                        <th class="col1">OutTime</th>
+                        <th class="col1">Depot Code</th>
+                        <th class="col1">Emp ID</th>
+                        <th class="col1">Comments</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="TableBody">
+            <table class="table-responsive">
+                <tbody id="OUTWARD_TBODY">
+                  <tr *ngFor="let item of this.service.OUTWARD_DATA let i=index">
+                    <td class="col1 color-black gap">
+                  <a (click)="Update({id:i})"><i class="fa fa-edit"></i></a>
+                  <a (click)="Delete({id:i})"><i class="fa fa-trash"></i></a>
+                </td>
+                <td class="col1 color-black">{{(i+1)}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['entryDate']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['dealerName']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['dealercode']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['invoiceNumber']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['invoiceDate']}}</td>
+                <td class="col1 color-black">{{this.service.ParseFloat(this.service.OUTWARD_DATA[i]['invoiceQt'])}}</td>
+                <td class="col1 color-black">{{(this.service.OUTWARD_DATA[i]['grade'])}}</td>
+                <td class="col1 color-black">{{this.service.ParseFloat(this.service.OUTWARD_DATA[i]['loading'])}}</td>
+                <td class="col1 color-black">{{this.service.ParseFloat(this.service.OUTWARD_DATA[i]['transphipment'])}}</td>
+                <td class="col1 color-black">{{this.service.ParseFloat(this.service.OUTWARD_DATA[i]['diversion'])}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['truckArrangedBy']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['vehicleNumber']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['driverName']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['driverMobileNumber']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['inTimeOfTruck']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['outTimeOfTruck']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['depot_code']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['emp_id']}}</td>
+                <td class="col1 color-black">{{this.service.OUTWARD_DATA[i]['comments']}}</td>
+              </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

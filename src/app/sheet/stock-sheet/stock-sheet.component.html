@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  <div class="main-contaniner-panel box-shadow">
+    <div class="div-close-poupup top-bg-color">
+      <div class="header-tag">
+        <h1 class="left-padding">This is Stock Report sheet : Select Options to navigate</h1>
+      </div>
+      <div class="button-Add-Reset">
+        <button type="submit" class="back-btn" [routerLink]="['/Home']" routerLinkActive="router-link-active">Back</button>
+      </div>
+    </div>
+    <div class="over-flow-panel">
+      <div class="date-selector-panel box-shadow">
+        <div class="input">
+          <div class="date-lable-input">
+            <label class="heading-lable">Select Start Date : </label>
+            <input type="date" class="start-date-input" [value]="this.DATA!=null?this.DATA['Start_Date']:''" #start_date>
+          </div>
+          <div class="date-lable-input">
+            <label class="heading-lable">Depot Name </label>
+            <input type="text" id="depot_Name" name="depot_Name" #depot_Name [value]="this.DATA!=null?this.DATA['Depot_Name']:'Select Option'" required>
+          </div>
+          <div class="date-lable-input">
+            <label class="End-date-label">Select Option BAG/TON</label>
+            <input type="text" id="select_option_bag_ton" (change)="BagTon(select_option_bag_ton.value)" #select_option_bag_ton required>
+          </div>
+        </div>
+        <div class="button-div">
+          <button class="search-btn" (click)="LoadTableData($event,{Start_Date:start_date.value,
+           Depot_Name:depot_Name.value})">Show</button>
+        </div>
+      </div>
+      <div class="show-select-value box-shadow">
+        <label  class="START_DATE"></label>
+        <label  class="DEPOT_NAME"></label>
+        <label  class="DEPOT_CODE"></label>
+      </div>
+      <div class="table-loader-all">
+        <app-stock-sheet-table></app-stock-sheet-table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

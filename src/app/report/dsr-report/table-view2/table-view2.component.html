@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main-contaniner-panel box-shadow">
+    <div class="div-close-poupup top-bg-color">
+      <div class="header-tag">
+        <h1 class="left-padding">This is Sales Data from Lowest to Highest</h1>
+      </div>
+    </div>
+    <div class="over-flow-panel show">
+      <div class="date-selector-panel box-shadow">
+        <div class="input">
+          <div class="date-lable-input">
+            <label for="checked-all" class="checked-all-label">Month</label>
+            <select id="select-option-data-view" class="select-option-data-view" #select_month>
+              <option value="Select Month">Select Month</option>
+              <option [value]="item" *ngFor="let item of this.Api_Service.getMonthList() let i=index">{{item}}</option>
+            </select>
+          </div>
+          <div class="date-lable-input">
+            <label class="heading-lable">Select Year</label>
+            <select id="select-option-data-view" class="select-option-data-view" #select_year>
+              <option value="Select Year">Select Year</option>
+              <option [value]="item" *ngFor="let item of this.Api_Service.getYearList()">{{item}}</option>
+            </select>
+          </div>
+          <div class="date-lable-input">
+            <label class="End-date-label">Select Option BAG/TON</label>
+            <select id="select_option_bag_ton" (change)="BagTon(select_option_bag_ton.value)" #select_option_bag_ton>
+              <option value="Bag" data-index="1">Bag</option>
+              <option value="Ton" data-index="20">Ton</option>
+            </select>
+          </div>
+        </div>
+        <div class="button-div">
+          <button class="search-btn" (click)="LoadTableData($event,{
+            Select_Year:select_year.value,Select_Month:select_month.value})">Show</button>
+        </div>
+      </div>
+      <div class="show-select-value box-shadow">
+        <label class="MONTH"></label>
+        <label class="YEAR"></label>
+      </div>
+      <div class="table-loader-all">
+        <div class="content-div">
+          <div class="content-html">
+            <h5 class="font-1rem">DAY WISE DEPOT STATEMENT ({{select_month.value}} {{select_year.value}})</h5>
+          </div>
+          <div class="print-table-div">
+            <button type="submit" class="btn-pdf-xls">.Pdf</button>
+            <button type="submit" class="btn-pdf-xls">.XLS</button>
+          </div>
+        </div>
+        <div class="table-responsive-main table-bg-color">
+          <div class="table-header">
+            <div class="col-100">
+              <table class="table-responsive" id="table_dsr_report">
+                <thead class="height-25">
+                  <tr>
+                    <th class="col2 col-15">Sr.No.</th>
+                    <th class="col2 col-15">Depot Name</th>
+                    <th class="col2 col-15">Depot CODE</th>
+                    <th class="col2 col-20 padding-right">TOTAL (TON)</th>
+                  </tr>
+                </thead>
+                <div class="overflow-div">
+                <tbody>
+                  <tr *ngFor="let item of this.service.DSR_REPORT_DATA_2['KeyList'] let i=index" class="tr-border-2px">
+                    <td class="col2 col-15 padding-right">{{(i+1)}}</td>
+                    <td class="col2 col-15">{{item}}</td>
+                    <td class="col2 col-15">{{this.DEPOT_CODE[item]}}</td>
+                    <td class="col2 col-20">
+                      {{this.service.ParseFloat((this.service.DSR_REPORT_DATA_2['Data'][item]['SUM']))}}</td>
+                  </tr>
+                </tbody>
+              </div>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

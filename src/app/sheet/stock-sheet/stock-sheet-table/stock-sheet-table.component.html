@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="content-div">
+        <div class="content-html">
+            <h5>New Stock Table</h5>
+        </div>
+        <div class="print-table-div">
+            <button type="submit" class="btn-pdf-xls">.Pdf</button>
+            <button type="submit" class="btn-pdf-xls">.XLS</button>
+        </div>
+    </div>
+    <div class="stock-sheet-table-panel table-bg-color">
+            <table class="table-responsive">
+                <thead class="column-adder">
+                  <tr>
+                    <th class="col1">GRADE</th>
+                    <th class="col1">Opening Stock</th>
+                    <th class="col1">Total Received Today</th>
+                    <th class="col1">Total Sales Today</th>
+                    <th class="col1">Closing Stock</th>
+                  </tr>
+                <tbody *ngIf="this.service.STOCK_SHEET_DATA[0]!=undefined">
+                  <tr *ngFor="let item of this.service.GRADE_LIST let i=index">
+                    <td class="col1">{{item}}</td>
+                    <td class="col1">{{this.service.ParseFloat(this.service.STOCK_SHEET_DATA[0]['OPENING_STOCK_LIST_GRADE'][item])}}</td>
+                    <td class="col1">{{this.service.ParseFloat(this.service.STOCK_SHEET_DATA[0]['RECIVED_TODAY_LIST_GRADE'][item])}}</td>
+                    <td class="col1">{{this.service.ParseFloat(this.service.STOCK_SHEET_DATA[0]['CLOSED_TODAY_LIST_GRADE'][item])}}</td>
+                    <td class="col1">{{this.service.ParseFloat(this.service.STOCK_SHEET_DATA[0]['CLOSED_STOCK_LIST_GRADE'][item])}}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    <div class="append-second-table" style="margin-top: 20px;">
+      <app-stock-sheet-table2 [data]="this.service.STOCK_SHEET_DATA[0]"></app-stock-sheet-table2>
+    </div>
+</body>
+
+</html>

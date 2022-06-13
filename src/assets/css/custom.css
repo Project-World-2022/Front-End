@@ -1,0 +1,255 @@
+.btn-primary {
+  background-color: #6495ed;
+  border-color: #6495ed;
+}
+
+.theme-text {
+  color: #6495ed;
+}
+
+.form-check-input:checked {
+  background-color: #6495ed;
+  border-color: #6495ed;
+}
+
+.theme-bg {
+  background: #6495ed;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  background-color: #6495ed;
+}
+
+.login-main-div {
+  background: url(../images/login-banner.jpg) no-repeat;
+  background-size: cover;
+}
+
+.login-div {
+  background: rgb(255 255 255 / 97%);
+  border-radius: 0px;
+}
+
+.login-div .card-header {
+  background: none;
+}
+
+.bdr-radius-0 {
+  border-radius: 0px !important;
+}
+
+.f-weight-400 {
+  font-weight: 400 !important;
+}
+
+.bg-none {
+  background: none !important;
+}
+
+.admin-logo {
+  max-width: 136px;
+  margin: 0px auto;
+}
+
+.dasboard-card {
+  border-color: #cfdefa;
+}
+
+.dasboard-card .card-body {
+  background: #6495ed;
+  color: #ffffff;
+}
+
+.dasboard-card .card-footer {
+  background: #fff;
+}
+
+.dashboard-logo {
+  width: 40px;
+  margin-right: 10px;
+  background: #fff;
+  padding: 5px 3px;
+  border-radius: 3px;
+}
+
+.login-dropdown .dropdown-toggle {
+  font-weight: bold;
+  color: #fff !important;
+}
+
+.login-dropdown .dropdown-menu {
+  margin: auto;
+  margin-top: 10px;
+  background-color: white;
+  margin-left: 10px !important;
+  border: 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 2px black;
+}
+
+.login-dropdown .dropdown-menu .dropdown-item {
+  border-bottom: 1px solid #eee;
+  padding: 10px 18px;
+  font-size: 15px;
+  transition: 0.5s ease;
+}
+
+.font-18 {
+  font-size: 18px;
+}
+
+.sb-sidenav-menu {
+  margin-top: 15px;
+}
+
+.login-bottom {
+  padding-right: 5px;
+  font-size: 11px;
+  text-align: right;
+  margin-bottom: 0px;
+  font-weight: 500;
+  padding-top: 10px;
+}
+
+.div-controller {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.div-close-poupup {
+  display: flex;
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    background-color: blue;
+    margin: auto;
+    margin-top: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.div-close-poupup button {
+  font-size: 1.5vw;
+  height: 100%;
+  font-weight: bold;
+  outline: none !important;
+  border: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: white;
+}
+
+.div-close-poupup button:hover {
+  box-shadow: none;
+  color: red;
+}
+
+.button-controller-div button {
+  width: 100px;
+  height: 50px;
+  padding: 5px;
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+}
+
+.button-controller-div button:hover {
+  box-shadow: 0px 5px 3px black;
+}
+
+.header-tag {
+  margin: auto;
+  margin-left: 10px;
+}
+
+.header-tag h1,
+.header-tag h2,
+.header-tag h3 {
+  color: white;
+  font-size: 22px;
+  white-space: break-spaces;
+  width: 100%;
+  margin: auto;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: white !important;
+  border-radius: 4px;
+  resize: vertical;
+  outline: none;
+  border: none;
+}
+
+label {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+input[type=submit2] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit2]:hover {
+  background-color: #45a049;
+}
+
+.col-25 {
+  float: left;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 65%;
+  margin-top: 6px;
+  text-align: center;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 890px) {
+  .col-25,
+  .col-75,
+  input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+  }
+}
+
+@media only screen and (max-width: 890px) {
+  .header-tag h1,
+  .header-tag h3 {
+    color: white;
+    font-size: 2.5vw;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+}

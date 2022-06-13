@@ -1,0 +1,146 @@
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.ProgressBar-ul {
+    display: grid;
+    width: 99%;
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.ProgressBar-ul .conatiner-main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    text-align: center;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.ProgressBar-ul .conatiner-main button {
+    color: white;
+    background-color: #c7c4c4;
+    width: 2vw;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+    font-size: 1vw;
+    font-weight: bold;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.ProgressBar-ul .conatiner-main h1 {
+    font-size: .8vw;
+    font-weight: bold;
+    color: white;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.ProgressBar-ul .conatiner-main button::after {
+    content: '';
+    background-color: #ccc;
+    width: 100%;
+    height: 8px;
+    position: absolute;
+    left: 0;
+    margin: auto;
+    margin-top: 8px;
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.ProgressBar-ul .conatiner-main:nth-child(even) button,
+.ProgressBar-ul .conatiner-main:nth-child(odd) button {
+    box-shadow: none;
+    border: none;
+    outline: none;
+    animation: pulse 2s infinite;
+    background-color: #1b6067;
+    color: #e6e8eb;
+}
+
+.ProgressBar-ul .conatiner-main:first-child button {
+    background-color: #002880;
+    color: white;
+}
+
+.ProgressBar-ul .conatiner-main .active::after {
+    animation: progresswidth .2s ease-in;
+    background-color: #002af7;
+    box-shadow: 0px 0px 5px 3px #b4b7b5 !important;
+}
+
+.ProgressBar-ul .conatiner-main button::after {
+    width: 100%;
+    left: 50%;
+}
+
+.ProgressBar-ul .conatiner-main:last-child button::after {
+    animation: stopprogresswidth .2s infinite;
+}
+
+
+/* .ProgressBar-ul .conatiner-main button:last-child {
+    width: 20vw;
+} */
+
+@keyframes progresswidth {
+    0% {
+        width: 0vw;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes stopprogresswidth {
+    0% {
+        width: 0vw;
+    }
+    100% {
+        width: 0%;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgb(85, 20, 59, 1);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(33, 131, 221, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(33, 131, 221, 0);
+    }
+}
+
+@keyframes stopBoxshadow {
+    0% {
+        box-shadow: none;
+    }
+    70% {
+        box-shadow: none;
+    }
+    100% {
+        box-shadow: none;
+    }
+}

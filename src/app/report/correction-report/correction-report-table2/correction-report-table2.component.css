@@ -1,0 +1,102 @@
+.TABLE_CORRECTION_INWARD_OUTWARD_MAIN_TABEL_DIV-2 {
+  width: 100%;
+  height: 70vh;
+  border-radius: 5px;
+  display: grid;
+  grid-template-rows: auto 62vh;
+  background-color: white;
+  overflow: auto;
+  margin-top: -9px;
+}
+
+.TABLE_CORRECTION_INWARD_OUTWARD_MAIN_TABEL_DIV-2 .TableBody {
+  width: 100%;
+}
+
+.TABLE_CORRECTION_INWARD_OUTWARD_MAIN_TABEL_DIV-2 thead {
+  border: none !important;
+  border-radius: 0rem;
+  background-color: #0699ef;
+}
+
+.TABLE_CORRECTION_INWARD_OUTWARD_MAIN_TABEL_DIV-2 .table-responsive {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  overflow: unset;
+}
+
+.HeaderDIV,
+.TableBody {
+  display: flex;
+}
+
+.TABLE_CORRECTION_INWARD_OUTWARD_MAIN_TABEL_DIV-2 .col1 {
+  width: 19vw;
+  white-space: break-spaces;
+  text-align: -webkit-match-parent;
+  padding: 10px;
+  border-right: 3px solid red;
+}
+
+.TABLE_CORRECTION_INWARD_OUTWARD_MAIN_TABEL_DIV-2 .col2 {
+  width: 100px;
+}
+
+.TABLE_CORRECTION_INWARD_OUTWARD_MAIN_TABEL_DIV-2 .table-responsive tr {
+  color: white;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 5px;
+  white-space: nowrap;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  justify-content: center;
+  text-transform: uppercase;
+  align-items: center;
+  justify-items: center;
+}
+
+.TABLE_CORRECTION_INWARD_OUTWARD_MAIN_TABEL_DIV-2 .TableBody .table-responsive tr {
+  color: black;
+  font-size: 15px;
+}
+
+.TABLE_CORRECTION_INWARD_OUTWARD_MAIN_TABEL_DIV-2 .TableBody .ALL_IN_ONE_TBODY .fas {
+  cursor: pointer;
+}
+
+.content-html {
+  width: 200px;
+  background-color: #004d7a;
+  padding: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: auto;
+  margin-left: 0px;
+  justify-content: center;
+  display: flex;
+  color: white;
+  margin-bottom: -5px;
+}
+
+.content-div {
+  width: 100%;
+  display: flex;
+}
+
+.inside-tr {
+  display: flex !important;
+  flex-direction: row;
+  background-color: red;
+}
+
+#min-error-tbody tr {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+#min-error-tbody tr td {
+  margin: auto;
+  margin-right: 0;
+}

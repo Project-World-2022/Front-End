@@ -1,0 +1,11 @@
+
+<div class="pos">
+  <div class="div">
+    <div class="connection">
+      <p  [class]="this.ser.isConnectionAvailable  ? 'p1 green' : 'p1 white'"> {{ this.ser.isConnectionAvailable  ? 'Online' : 'Offline'}} </p>
+      <div id="blackout" class="noselect">
+          <p>{{ this.ser.isConnectionAvailable  ? 'Internet Connected!' : 'No Internet connection!'}}</p>
+      </div>
+    </div>
+  </div>
+</div>

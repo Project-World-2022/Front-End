@@ -1,0 +1,93 @@
+*,body,html{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.left-nav{
+    margin: auto;
+    margin-right: 0;
+    width: 100%;
+}
+
+.left-nav >ul>li>a{
+  font-size: 20px;
+  font-weight: 500;
+  font-family: 'Times New Roman', Times, serif;
+  color: white;
+}
+
+
+.nav-item.active{
+  background: orange;
+  border-radius: 70px;
+}
+.nav-item.active a{
+  color: black !important;
+  font-weight: bold !important;
+}
+
+.title-text{
+  font-size: 30px;
+  padding: 0;
+  font-family: cursive;
+  text-decoration: underline;
+  text-transform: uppercase;
+  margin: auto;
+  width: 100%;
+}
+
+.navbar-expand-lg .navbar-nav {
+    margin: auto;
+    margin-right: 0 !important;
+    padding-left: 20px;
+    width: 60%;
+}
+
+li > a {
+  color: #333;
+  text-decoration: none;
+  display: inline-block;
+  position: relative;
+}
+
+li > a::after {
+  content: "";
+  display: block;
+  margin: auto;
+  height: 3px;
+  width: 0;
+  top: 5px;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+li > a:hover::after, li > a.active-nav::after {
+  width: 100%;
+  background: white;
+}
+
+.navbar {
+    padding: 0px;
+    padding-left: 30px;
+    padding-right: 30px;
+    display: flex;
+    grid-gap: 10px;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.nav-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  margin-right: 0;
+}
+
+.navbar-toggler {
+  cursor: pointer;
+  margin: auto;
+  margin-right: 0;
+}

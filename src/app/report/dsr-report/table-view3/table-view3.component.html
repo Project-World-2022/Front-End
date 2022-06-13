@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main-contaniner-panel box-shadow">
+    <div class="div-close-poupup top-bg-color">
+      <div class="header-tag">
+        <h1 class="left-padding">This is Average per Day Sheet</h1>
+      </div>
+    </div>
+    <div class="over-flow-panel show">
+      <div class="date-selector-panel box-shadow">
+        <div class="input">
+          <div class="date-lable-input">
+            <label for="checked-all" class="checked-all-label">Month</label>
+            <select id="select-option-data-view" class="select-option-data-view" #select_month>
+              <option value="Select Month">Select Month</option>
+              <option [value]="item" *ngFor="let item of this.Api_Service.getMonthList() let i=index">{{item}}</option>
+            </select>
+          </div>
+          <div class="date-lable-input">
+            <label class="heading-lable">Select Year</label>
+            <select id="select-option-data-view" class="select-option-data-view" #select_year>
+              <option value="Select Year">Select Year</option>
+              <option [value]="item" *ngFor="let item of this.Api_Service.getYearList()">{{item}}</option>
+            </select>
+          </div>
+          <div class="date-lable-input">
+            <label class="End-date-label">Select Option BAG/TON</label>
+            <select id="select_option_bag_ton" (change)="BagTon(select_option_bag_ton.value)" #select_option_bag_ton>
+              <option value="Bag" data-index="1">Bag</option>
+              <option value="Ton" data-index="20">Ton</option>
+            </select>
+          </div>
+        </div>
+        <div class="button-div">
+          <button class="search-btn" (click)="LoadTableData($event,{
+            Select_Year:select_year.value,Select_Month:select_month.value})">Show</button>
+        </div>
+      </div>
+      <div class="show-select-value box-shadow">
+        <label class="MONTH"></label>
+        <label class="YEAR"></label>
+      </div>
+      <div class="overflow-div" *ngIf="this.service.DSR_REPORT_DATA_3!=null && this.service.DSR_REPORT_DATA_3!=''">
+        <div class="parent-class">
+          <div class="box-col-sm">
+            <div class="border-top-class">
+              <h5 class="left-header-text">BANGALORE ( {{select_option_bag_ton.value!='Select Month'?select_option_bag_ton.value:'Bag'}} )</h5>
+              <h5 class="right-header-text margin-right">({{select_month.value!='Select Month'?select_month.value:''}} | {{select_year.value!='Select Year'?select_year.value:''}})</h5>
+            </div>
+            <div class="card-panel">
+              <h5 class="text">Bangalore Depots Sales : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Karnataka']['Result_1'])}}</span> </h5>
+              <h5 class="text">Upcountry Depots Sales : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Karnataka']['Result_2'])}}</span> </h5>
+              <h5 class="text">Billing point Sales : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Karnataka']['Result_3'])}}</span> </h5>
+            </div>
+            <h5 class="text total-sum">TOTAL : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Karnataka']['SUM'])}}</span></h5>
+          </div>
+          <div class="box-col-sm">
+            <div class="border-top-class">
+              <h5 class="left-header-text">BANGALORE AVERAGE ( {{select_option_bag_ton.value!='Select Month'?select_option_bag_ton.value:'Bag'}} )</h5>
+              <h5 class="right-header-text margin-right">({{select_month.value!='Select Month'?select_month.value:''}} | {{select_year.value!='Select Year'?select_year.value:''}})</h5>
+            </div>
+            <div class="card-panel">
+              <h5 class="text">Bangalore Depots Sales Average per Day : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Karnataka']['AVERAGE_Result_1'])}}</span></h5>
+              <h5 class="text">Upcountry Depots Sales Average per Day : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Karnataka']['AVERAGE_Result_2'])}}</span></h5>
+              <h5 class="text">Billing Depots Sales Average per Day : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Karnataka']['AVERAGE_Result_3'])}}</span></h5>
+            </div>
+            <h5 class="text total-sum">TOTAL : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Karnataka']['AVERAGE_SUM'])}}</span></h5>
+          </div>
+          <div class="box-col-sm">
+            <div class="border-top-class">
+              <h5 class="left-header-text">HYDERABAD ( {{select_option_bag_ton.value!='Select Month'?select_option_bag_ton.value:'Bag'}} )</h5>
+              <h5 class="right-header-text margin-right">({{select_month.value!='Select Month'?select_month.value:''}} | {{select_year.value!='Select Year'?select_year.value:''}})</h5>
+            </div>
+            <div class="card-panel">
+              <h5 class="text">Hyderabad Depots Sales : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Hyderabad']['Result_2'])}}</span></h5>
+              <h5 class="text">Billing point Sales : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Hyderabad']['Result_1'])}}</span></h5>
+            </div>
+            <h5 class="text total-sum">TOTAL : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Hyderabad']['SUM'])}}</span></h5>
+          </div>
+          <div class="box-col-sm">
+            <div class="border-top-class">
+              <h5 class="left-header-text">HYDERABAD AVERAGE ( {{select_option_bag_ton.value!='Select Month'?select_option_bag_ton.value:'Bag'}} )</h5>
+              <h5 class="right-header-text margin-right">({{select_month.value!='Select Month'?select_month.value:''}} | {{select_year.value!='Select Year'?select_year.value:''}})</h5>
+            </div>
+            <div class="card-panel">
+              <h5 class="text">Hyderabad Depots Sales Average per Day : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Hyderabad']['AVERAGE_Result_2'])}}</span></h5>
+              <h5 class="text">Billing Depots Sales Average per Day : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Hyderabad']['AVERAGE_Result_1'])}}</span></h5>
+            </div>
+            <h5 class="text total-sum">TOTAL : <span class="right">{{this.service.ParseFloat(this.service.DSR_REPORT_DATA_3['Hyderabad']['AVERAGE_SUM'])}}</span></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

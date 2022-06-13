@@ -1,0 +1,15 @@
+*,html,body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100vh;
+}
+
+
+:-webkit-autofill,
+:-webkit-autofill:hover,
+:-webkit-autofill:focus,
+:-webkit-autofill:active {
+    -webkit-transition: color, background-color 9999s ease-out !important;
+    -webkit-transition-delay: 9999s !important;
+}

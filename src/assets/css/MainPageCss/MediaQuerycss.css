@@ -1,0 +1,79 @@
+html {
+	font-size: 13px;
+}
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-size: 100%;
+}
+
+body {
+    display: block;
+    overflow: hidden;
+    overflow-x: hidden;
+    background-color: #eeeeee !important;
+}
+h1,h5,h3,h4 {
+	font-size: .5rem;
+}
+h2,label {
+	font-size: 1rem;
+}
+p, li {
+	font-size: .6rem;
+}
+i{
+    font-size: .5rem;
+}
+.icon-div i{
+    font-size: 2rem;
+}
+@media screen and (max-width: 570px){
+  html{
+    font-size: 22px;
+  }
+  h2,label {
+	font-size: .8rem;
+}
+p, li,i {
+	font-size: 1rem;
+}
+}
+@media screen and (min-width: 620px){
+  html{
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 680px){
+  html{
+    font-size: 17px;
+  }
+}
+@media screen and (min-width: 720px){
+  html{
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 800px){
+  html{
+    font-size: 19px;
+  }
+}
+@media screen and (min-width: 860px){
+  html{
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 920px){
+  html{
+    font-size: 21px;
+  }
+}
+@media screen and (min-width: 1000px){
+  html{
+    font-size: 22px;
+  }
+}

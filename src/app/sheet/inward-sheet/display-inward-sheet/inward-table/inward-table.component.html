@@ -1,0 +1,72 @@
+<div class="print-table-div">
+  <button type="submit" class="XLS_BUTTON" (click)="openPDF('.csv')">.csv</button>
+</div>
+<div class="table-panel-controller table-bg-color">
+    <table class="table-responsive" id="OUTER_TABLE" #htmlData>
+      <thead>
+        <tr>
+          <!-- total column is 26  -->
+          <th class="col1">Action</th>
+          <th class="col1">Sr.No.</th>
+          <th class="col1">Entry_Date</th>
+          <th class="col1">SourcePlant</th>
+          <th class="col1">PlantInvoiceNo</th>
+          <th class="col1">Invoice_Date</th>
+          <th class="col1">Arr.Dt.Truck</th>
+          <th class="col1">InvoiceQty</th>
+          <th class="col1">Grade</th>
+          <th class="col1">GoodStock</th>
+          <th class="col1">Cut&Torn</th>
+          <th class="col1">Shortage</th>
+          <th class="col1">Unloading</th>
+          <th class="col1">Transhipment</th>
+          <th class="col1">diversion</th>
+          <th class="col1">TransportC0mpany</th>
+          <th class="col1">VehicleNo.</th>
+          <th class="col1">DriveName</th>
+          <th class="col1">DriverMob.</th>
+          <th class="col1">Reason Delay</th>
+          <th class="col1">InTime</th>
+          <th class="col1">OutTime</th>
+          <th class="col1">HaltTime</th>
+          <th class="col1">Depot Code</th>
+          <th class="col1">Emp ID</th>
+          <th class="col1">Comments</th>
+        </tr>
+      </thead>
+      <tbody id="OUTWARD_TBODY">
+        <tr *ngFor="let item of this.service.INWARD_DATA let i=index">
+          <td class="col1 color-black gap">
+           <a (click)="Update({id:i})"><i class="fa fa-edit" title="Edit of Table : row : "></i></a>
+           <a (click)="Delete({id:i})"><i class="fa fa-trash" title="Delete of Table : row : "></i></a>
+          </td>
+          <td class="col1 color-black">{{(i+1)}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['entryDate'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['particulars'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['invoiceNumber'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['invoiceDate'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['arrivalDateOfTruck'])}}</td>
+          <td class="col1 color-black">{{this.service.ParseFloat(this.service.INWARD_DATA[i]['invoiceQty'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['grade'])}}</td>
+          <td class="col1 color-black">{{this.service.ParseFloat(this.service.INWARD_DATA[i]['goodStock'])}}</td>
+          <td class="col1 color-black">{{this.service.ParseFloat(this.service.INWARD_DATA[i]['cutAndTorn'])}}</td>
+          <td class="col1 color-black">{{this.service.ParseFloat(this.service.INWARD_DATA[i]['shortage'])}}</td>
+          <td class="col1 color-black">{{this.service.ParseFloat(this.service.INWARD_DATA[i]['unloading'])}}</td>
+          <td class="col1 color-black">{{this.service.ParseFloat(this.service.INWARD_DATA[i]['transphipment'])}}</td>
+          <td class="col1 color-black">{{this.service.ParseFloat(this.service.INWARD_DATA[i]['diversion'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['transporterCompany'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['vehicleNumber'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['driverName'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['driverMobileNumber'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['reasonForDelay'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['inTimeOfTruck'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['outTimeOfTruck'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['haltHour'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['depot_code'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['emp_id'])}}</td>
+          <td class="col1 color-black">{{(this.service.INWARD_DATA[i]['comments'])}}</td>
+          <!-- <td class="col2 color-black">{{this.service.INWARD_DATA[i]['stampTime']}}</td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>

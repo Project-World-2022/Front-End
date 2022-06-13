@@ -1,0 +1,181 @@
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.responsive-div {
+    width: 100%;
+    height: auto;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.responsive-div .column-1-responsive,
+.responsive-div .column-2-responsive,
+.responsive-div .column-3-responsive {
+    display: grid;
+    width: 99%;
+    height: auto;
+    max-height: 100px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.responsive-div .element-column-responsive {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 0% 70% 0%;
+    gap: 15px;
+    margin: auto;
+    margin-top: 0;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.responsive-div .element-column-2-responsive {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: 0% 70% 0%;
+    gap: 15px;
+    margin: auto;
+    margin-top: 0;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.responsive-div .responsive-button {
+    width: 100%;
+    height: 100%;
+    background-color: #2f3640 !important;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    border: 2px solid rgb(63, 63, 172);
+}
+
+.responsive-button {
+    width: 100%;
+    height: 100%;
+    background-color: #2f3640 !important;
+    font-size: 1.2vw;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.responsive-button:hover {
+    box-shadow: 0px 5px 5px black;
+}
+
+.responsive-div .content-lable {
+    color: black;
+    text-align: center;
+    width: 100%;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 0;
+    margin: auto;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.responsive-div .responsive-input {
+    width: 100%;
+    height: 100%;
+    background-color: #2f3640 !important;
+    padding: 5px;
+    font-size: 1.2vw;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: auto;
+    border: none !important;
+    border-radius: 5px;
+    outline: none !important;
+    color: white !important;
+}
+
+.responsive-search-input {
+    width: 30vw;
+    height: 100%;
+    font-size: 1.5rem;
+    text-align: center;
+    outline: none;
+    color: white;
+    border: 0;
+    background-color: #2f3640;
+    border-right: 3vw solid #1818e4;
+    border-radius: .5vw;
+    box-shadow: none;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: auto;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition: color, background-color 9999s ease-out !important;
+    -webkit-transition-delay: 9999s !important;
+}
+
+input::placeholder {
+    color: white !important;
+    opacity: 1;
+}
+
+.responsive-div .responsive-input:hover,
+active,
+focus {
+    box-shadow: 5px 10px 15px black;
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+@media (max-width: 995px) {
+    .responsive-div .column-1-responsive,
+    .responsive-div .column-2-responsive,
+    .responsive-div .column-3-responsive {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="main-contaniner-panel box-shadow">
+    <div class="responsive-div">
+      <div class="div-close-poupup top-bg-color">
+        <div class="header-tag">
+          <h1>This is Dealer View Sheet</h1>
+        </div>
+        <div class="button-Add-Reset">
+          <button type="submit" class="back-btn" [routerLink]="['/Home']" routerLinkActive="router-link-active">Back</button>
+        </div>
+      </div>
+      <div class="append-html-page">
+        <div class="content-div">
+          <div class="content-html">
+            <h5>Dealer Table</h5>
+          </div>
+          <div class="print-table-div">
+            <button type="submit" class="btn-pdf-xls">.Pdf</button>
+            <button type="submit" class="btn-pdf-xls">.XLS</button>
+          </div>
+        </div>
+        <div class="table-responsive-main table-bg-color">
+          <div class="HeaderDIV">
+            <table class="table-responsive" id="DEPOT_TABLE">
+              <thead>
+                <tr>
+                  <th class="col2">Action</th>
+                  <th class="col2">Sr.No.</th>
+                  <th class="col1">Depot Name</th>
+                  <th class="col1">Dealer Name</th>
+                  <th class="col1">Dealer Code</th>
+                  <th class="col1">Dealer Email Id</th>
+                  <th class="col1">Dealer Mobile Number</th>
+                  <th class="col1">Dealer City</th>
+                  <th class="col1">Dealer State</th>
+                  <th class="col1">Dealer Pincode</th>
+                  <th class="col1">Dealer Address</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="TableBody">
+            <table class="table-responsive" id="DEPOT_TABLE_TBODY">
+              <tbody id="DEPOT_TAB_1">
+                <tr *ngFor="let item of this.DATA let i=index">
+                  <td class="col1">{{(i+1)}}</td>
+                  <td class="col1">{{item.DEPOT_NAME}}</td>
+                  <td class="col1">{{item.DEALER_NAME}}</td>
+                  <td class="col1">{{item.DALER_CODE}}</td>
+                  <td class="col1">{{item.DEALER_EMAIL_ID}}</td>
+                  <td class="col1">{{item.CONTACT_NUMBER}}</td>
+                  <td class="col1">{{item.CITY}}</td>
+                  <td class="col1">{{item.STATE}}</td>
+                  <td class="col1">{{item.PINCODE}}</td>
+                  <td class="col1">{{item.ADDRESS_DEALER}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

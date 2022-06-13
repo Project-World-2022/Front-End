@@ -1,0 +1,133 @@
+<div class="content-div">
+  <div class="content-html">
+    <h5>New Stock Table</h5>
+  </div>
+  <div class="print-table-div">
+    <button type="submit" class="btn-pdf-xls">.Pdf</button>
+    <button type="submit" class="btn-pdf-xls">.XLS</button>
+  </div>
+</div>
+<div class="table-responsive-main table-bg-color">
+        <div class="table-header" *ngIf="this.service.NEW_STOCK_SHEET_DATA_2!=null && this.service.NEW_STOCK_SHEET_DATA_2!=undefined">
+          <div class="col-100">
+            <table class="table-responsive">
+              <thead class="height-25">
+                <tr>
+                  <th class="col2 col-15">Depot Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="inside-tr h">
+                  <th class="col-2"></th>
+                  <th class="col-2"></th>
+                  <th class="col-2"></th>
+                  <th class="col-2"></th>
+                  <th class="col-2"></th>
+                </tr>
+                <tr *ngFor="let item of this.service.NEW_STOCK_SHEET_DATA_2['KeyList'] let i=index">
+                  <td class="col2 col-15">{{item}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-100">
+            <table class="table-responsive">
+              <thead class="height-25">
+                <tr>
+                  <th class="col-20">Total Space in SFT</th>
+                  <th class="col-20">Total CAPACITY_MT</th>
+                  <th class="col-20">Godown % used</th>
+                </tr>
+              </thead>
+              <tbody id="NEW_STOCK_TABLE_SPACE_CAPACITY_MT">
+                <tr class="inside-tr h">
+                  <th class="col-2"></th>
+                  <th class="col-2"></th>
+                  <th class="col-2"></th>
+                </tr>
+                <tr *ngFor="let item of this.service.NEW_STOCK_SHEET_DATA_2['KeyList'] let i=index">
+                  <td class="col-20">{{this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['SPACE_CAPACITY'][0]['space']}}</td>
+                  <td class="col-20">{{this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['SPACE_CAPACITY'][0]['capacity']}}</td>
+                  <td class="col-20">{{this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['TOTAL_GODOWN_PERCENTAGE']==0 || this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['SPACE_CAPACITY'][0]['capacity']==0?'0':this.ConvertInt_to_Float(this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['TOTAL_GODOWN_PERCENTAGE'],this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['SPACE_CAPACITY'][0]['capacity'])}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-100 width-500">
+            <table class="table-responsive">
+              <thead class="height-25">
+                <tr>
+                  <th class="col25 top-margin">Opening Stock</th>
+                </tr>
+              </thead>
+              <tbody id="NEW_STOCK_TABLE_TBODY_2_TAB_1">
+                <tr class="inside-tr">
+                  <th class="col-2" *ngFor="let item_grade of this.service.GRADE_LIST let j=index">{{item_grade}}</th>
+                </tr>
+                <tr *ngFor="let item of this.service.NEW_STOCK_SHEET_DATA_2['KeyList'] let i=index">
+                  <th class="col-2" *ngFor="let item_grade of this.service.GRADE_LIST let j=index">
+                    {{this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['OPENING_STOCK']['GRADE_LIST'][item_grade]==undefined?'0':this.service.ParseFloat(this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['OPENING_STOCK']['GRADE_LIST'][item_grade])}}
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-100 width-500">
+            <table class="table-responsive">
+              <thead class="height-25">
+                <tr>
+                  <th class="col25 top-margin">Today Received Stock</th>
+                </tr>
+              </thead>
+              <tbody id="NEW_STOCK_TABLE_TBODY_2_TAB_1">
+                <tr class="inside-tr">
+                  <th class="col-2" *ngFor="let item_grade of this.service.GRADE_LIST let j=index">{{item_grade}}</th>
+                </tr>
+                <tr *ngFor="let item of this.service.NEW_STOCK_SHEET_DATA_2['KeyList'] let i=index">
+                  <th class="col-2" *ngFor="let item_grade of this.service.GRADE_LIST let j=index">
+                    {{this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['TODAY_RECEIVED_STOCK']['GRADE_LIST'][item_grade]==undefined?'0':this.service.ParseFloat(this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['TODAY_RECEIVED_STOCK']['GRADE_LIST'][item_grade])}}
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-100 width-500">
+            <table class="table-responsive">
+              <thead class="height-25">
+                <tr>
+                  <th class="col25 top-margin">Today Sales Stock</th>
+                </tr>
+              </thead>
+              <tbody id="NEW_STOCK_TABLE_TBODY_2_TAB_1">
+                <tr class="inside-tr">
+                  <th class="col-2" *ngFor="let item_grade of this.service.GRADE_LIST let j=index">{{item_grade}}</th>
+                </tr>
+                <tr *ngFor="let item of this.service.NEW_STOCK_SHEET_DATA_2['KeyList'] let i=index">
+                  <th class="col-2" *ngFor="let item_grade of this.service.GRADE_LIST let j=index">
+                    {{this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['TODAY_CLOSING_STOCK']['GRADE_LIST'][item_grade]==undefined?'0':this.service.ParseFloat(this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['TODAY_CLOSING_STOCK']['GRADE_LIST'][item_grade])}}
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-100 width-500">
+            <table class="table-responsive">
+              <thead class="height-25">
+                <tr>
+                  <th class="col25 top-margin">Closing Stock</th>
+                </tr>
+              </thead>
+              <tbody id="NEW_STOCK_TABLE_TBODY_2_TAB_1">
+                <tr class="inside-tr">
+                  <th class="col-2" *ngFor="let item_grade of this.service.GRADE_LIST let j=index">{{item_grade}}</th>
+                </tr>
+                <tr *ngFor="let item of this.service.NEW_STOCK_SHEET_DATA_2['KeyList'] let i=index">
+                  <th class="col-2" *ngFor="let item_grade of this.service.GRADE_LIST let j=index">
+                    {{this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['CLOSING_STOCK']['GRADE_LIST'][item_grade]==undefined?'0':this.service.ParseFloat(this.service.NEW_STOCK_SHEET_DATA_2['Data'][item]['CLOSING_STOCK']['GRADE_LIST'][item_grade])}}
+                  </th>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+</div>
