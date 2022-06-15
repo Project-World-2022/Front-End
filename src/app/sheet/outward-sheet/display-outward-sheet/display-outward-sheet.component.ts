@@ -3,7 +3,9 @@ import { NotificationService } from 'src/app/notification.service';
 import { ApiServiceService } from 'src/service/api-service.service';
 import { AutoCompletedInputService } from 'src/service/auto-completed-input.service';
 import { DataControllerService } from 'src/service/data-controller.service';
+import { PdfDownloadService } from 'src/service/pdf-download.service';
 import { ServiceService } from 'src/service/service.service';
+import { UICALENDERService } from 'src/service/ui-calender.service';
 import { ValidationService } from 'src/service/validation.service';
 declare var $: any;
 
@@ -23,21 +25,9 @@ export class DisplayOutwardSheetComponent implements OnInit {
     private Validation: ValidationService,
     public Api_Service: ApiServiceService,
     protected PreviewData: DataControllerService,
-    public DropDown: AutoCompletedInputService) {
-    service.ALLDepotCode().then((res) => {
-      this.r = res;
-      this.DEPOT_NAME_CODE_OBJECT['Select Option'] = 'Select Option';
-       for (let index = 0; index < this.r.length; index++) {
-         this.DEPOT_ALL[index] = (this.r[index]['depot_name']);
-         this.DEPOT_CODE[this.r[index]['depot_name']] = this.r[index]['depot_code'];
-         this.DEPOT_NAME_CODE_OBJECT[this.r[index]['depot_code']] = this.r[index]['depot_name'];
-       }
-       setTimeout(() => {
-        this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT);
-      }, 1000);
-    });
-    this.DATA = this.PreviewData.getData('OutwardSheetViewSelect');
-  }
+    public DropDown: AutoCompletedInputService,
+    public UI_CALENDER: UICALENDERService,
+    public pdfDownnload: PdfDownloadService) {}
   LoadTableData(Event: any, data: any) {
     if (this.Validation.isEmptyObject2(data, ['Select Month', 'Select Year', 'Select Depot'], Event)) {
       $("." + Event.target.className).css({ 'pointer-events': 'auto', 'cursor': 'pointer' });
@@ -50,14 +40,57 @@ export class DisplayOutwardSheetComponent implements OnInit {
       this.PreviewData.setData('OutwardSheetViewSelect', data);
     }
   }
+  public openPDF(Type: any): void {
+    if (Type=='.pdf') {
+      $("#OUTER_TABLE").tableHTMLExport({
+        type: 'pdf',
+        filename: 'sample.pdf',
+        orientation:'pt'
+      });
+    } else if (Type=='.xls') {
+
+    }
+    else if (Type=='.json') {
+      $("#OUTER_TABLE").tableHTMLExport({
+        type: 'json',
+        filename: 'sample.json'
+    });
+    }
+    else if (Type=='.csv') {
+      $("#OUTER_TABLE").tableHTMLExport({
+        type: 'csv',
+        filename: 'sample.csv'
+    });
+    }
+}
   ngOnInit(): void {
-    setTimeout(() => {
-      if (this.DATA != null && this.DATA != undefined) {
-        $(`#depot-code-select option[value='${this.DATA['Depot_Name']}']`).attr("selected", "selected");
-        $('.inward-search-btn').click();
+    this.UI_CALENDER.datePicker('#Start_Date');
+    this.UI_CALENDER.datePicker('#End_Date');
+    this.service.ALLDepotCode().then((res) => {
+      this.r = res;
+      this.DEPOT_NAME_CODE_OBJECT['Select Option'] = 'Select Option';
+       for (let index = 0; index < this.r.length; index++) {
+         this.DEPOT_ALL[index] = (this.r[index]['depot_name']);
+         this.DEPOT_CODE[this.r[index]['depot_name']] = this.r[index]['depot_code'];
+         this.DEPOT_NAME_CODE_OBJECT[this.r[index]['depot_code']] = this.r[index]['depot_name'];
+       }
+    });
+    this.DATA = this.PreviewData.getData('OutwardSheetViewSelect');
+    this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT,null);
+    this.DropDown.DropDownShow('#select_option_bag_ton', ['Bag', 'Ton'], (res:any) => {
+      if (res=='Ton') {
+        this.service.CONVERT_TON_BAG = 20;
       } else {
+        this.service.CONVERT_TON_BAG = 1;
       }
-    }, 1500);
+    });
+    // setTimeout(() => {
+    //   if (this.DATA != null && this.DATA != undefined) {
+    //     $(`#depot-code-select option[value='${this.DATA['Depot_Name']}']`).attr("selected", "selected");
+    //     $('.inward-search-btn').click();
+    //   } else {
+    //   }
+    // }, 1500);
   }
    TDate() {
     var UserDate = $("start-date-input").val();
@@ -81,11 +114,4 @@ export class DisplayOutwardSheetComponent implements OnInit {
     }
     return true;
    }
-   BagTon(event: any) {
-    if (event=='Ton') {
-      this.service.CONVERT_TON_BAG = 20;
-    } else {
-      this.service.CONVERT_TON_BAG = 1;
-    }
-  }
 }

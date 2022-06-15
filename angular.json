@@ -33,6 +33,7 @@
               "src/assets/css/styles.css",
               "src/assets/css/responsive.css",
               "src/assets/css/custom.css",
+              "src/assets/css/uicalender.css",
               "src/assets/fontawesome-free-5.15.1-web/css/fontawesome.css"
             ],
             "scripts": [
@@ -83,7 +84,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "main-container:build:production"
+              "browserTarget": "main-container:build:production",
+              "proxyConfig": "src/proxy.conf.json"
             },
             "development": {
               "browserTarget": "main-container:build:development"

@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiServiceService } from 'src/service/api-service.service';
 import { AutoCompletedInputService } from 'src/service/auto-completed-input.service';
 import { DataControllerService } from 'src/service/data-controller.service';
+import { PdfDownloadService } from 'src/service/pdf-download.service';
 import { ServiceService } from 'src/service/service.service';
+import { UICALENDERService } from 'src/service/ui-calender.service';
 import { ValidationService } from 'src/service/validation.service';
 declare var $: any;
 
@@ -18,28 +20,17 @@ export class DisplayInwardSheetComponent implements OnInit {
   r: any = [];
   DATA: any = [];
   DEPOT_NAME_CODE_OBJECT: any = [];
+  GRADE_LIST_OBJECT: any = [];
   constructor (private http: HttpClient, public service: ServiceService,
     public Api_Service: ApiServiceService,
     private Validation: ValidationService,
     protected PreviewData: DataControllerService,
-    public DropDown: AutoCompletedInputService) {
-    service.ALLDepotCode().then((res) => {
-      this.r = res;
-      this.DEPOT_NAME_CODE_OBJECT['Select Option'] = 'Select Option';
-      for (let index = 0; index < this.r.length; index++) {
-        this.DEPOT_ALL[index] = (this.r[index]['depot_name']);
-        this.DEPOT_CODE[this.r[index]['depot_name']] = this.r[index]['depot_code'];
-        this.DEPOT_NAME_CODE_OBJECT[this.r[index]['depot_code']] = this.r[index]['depot_name'];
-      }
-      this.DEPOT_ALL.sort();
-      this.DATA = this.PreviewData.getData('InwardSheetViewSelect');
-      setTimeout(() => {
-        this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT);
-      }, 1500);
-   });
-  }
+    public DropDown: AutoCompletedInputService,
+    public pdfDownnload: PdfDownloadService,
+    public UI_CALENDER: UICALENDERService) {}
   LoadTableData(Event: any, data: any) {
-    if (this.Validation.isEmptyObject2(data, ['Select Depot'], Event)) {
+    console.log(data);
+    if (this.Validation.isEmptyObject2(data, ['Select Option','undefined'], Event)) {
       $("." + Event.target.className).css({ 'pointer-events': 'auto', 'cursor': 'pointer' });
       data['Depot_Code'] = this.DEPOT_CODE[data['Depot_Name']];
       $('.START_DATE').html("Selected Start Date is <br>" + data['Start_Date']);
@@ -73,17 +64,29 @@ export class DisplayInwardSheetComponent implements OnInit {
     return true;
 }
   ngOnInit(): void {
-    setTimeout(() => {
-      if (this.DATA != null && this.DATA != undefined) {
-        $('.inward-search-btn').click();
+    this.GRADE_LIST_OBJECT['Select Option'] = 'Select Option';
+    this.service.ALLDepotCode().then((res) => {
+      this.r = res;
+      this.DEPOT_NAME_CODE_OBJECT['Select Option'] = 'Select Option';
+      for (let index = 0; index < this.r.length; index++) {
+        this.DEPOT_ALL[index] = (this.r[index]['depot_name']);
+        this.DEPOT_CODE[this.r[index]['depot_name']] = this.r[index]['depot_code'];
+        this.DEPOT_NAME_CODE_OBJECT[this.r[index]['depot_code']] = this.r[index]['depot_name'];
       }
-    }, 1500);
-  }
-  BagTon(event: any) {
-    if (event=='Ton') {
-      this.service.CONVERT_TON_BAG = 20;
-    } else {
-      this.service.CONVERT_TON_BAG = 1;
-    }
+      this.DEPOT_ALL.sort();
+      this.DATA = this.PreviewData.getData('InwardSheetViewSelect');
+   });
+    this.UI_CALENDER.datePicker('#Start_Date');
+    this.UI_CALENDER.datePicker('#End_Date');
+    this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT, null);
+    this.GRADE_LIST_OBJECT['1'] = 'Bag';
+    this.GRADE_LIST_OBJECT['20'] = 'Ton';
+    this.DropDown.DropDownShow('#select_option_bag_ton',this.GRADE_LIST_OBJECT, (res:any) => {
+      if (res=='Ton') {
+        this.service.CONVERT_TON_BAG = 20;
+      } else {
+        this.service.CONVERT_TON_BAG = 1;
+      }
+    });
   }
 }

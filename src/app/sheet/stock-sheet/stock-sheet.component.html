@@ -23,7 +23,8 @@
         <div class="input">
           <div class="date-lable-input">
             <label class="heading-lable">Select Start Date : </label>
-            <input type="date" class="start-date-input" [value]="this.DATA!=null?this.DATA['Start_Date']:''" #start_date>
+            <!-- <input type="date" class="start-date-input" [value]="this.DATA!=null?this.DATA['Start_Date']:''" #start_date> -->
+            <input type="text" class="responsive-input" id="Start_Date" placeholder="Enter Date" [value]="this.DATA!=null?this.DATA['Start_Date']:''" #start_date />
           </div>
           <div class="date-lable-input">
             <label class="heading-lable">Depot Name </label>

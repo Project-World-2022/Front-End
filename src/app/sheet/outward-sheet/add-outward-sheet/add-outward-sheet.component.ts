@@ -48,8 +48,8 @@ export class AddOutwardSheetComponent implements OnInit {
         for (let index = 0; index <  this.service.GRADE_LIST.length; index++) {
           GradeList.push(this.service.GRADE_LIST[index]);
         }
-      this.DropDown.DropDownShow('#grade', GradeList);
-      this.DropDown.DropDownShow('#depot_code',this.DEPOT_NAME_CODE_OBJECT);
+      this.DropDown.DropDownShow('#grade', GradeList,null);
+      this.DropDown.DropDownShow('#depot_code',this.DEPOT_NAME_CODE_OBJECT,null);
     }, 1500);
     this.DATA = this.PreviewData.getData('OutwardSheet_Data');
     if (this.DATA!=undefined) {

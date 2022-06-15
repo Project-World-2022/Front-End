@@ -16,6 +16,7 @@
       </div>
       <div class="button-Add-Reset">
         <button type="submit" class="back-btn" [routerLink]="['/Home']" routerLinkActive="router-link-active">Back</button>
+        <button type="submit" class="back-btn" (click)="this.pdfDownnload.openPDF('.csv','#INWARD_TABLE')">.csv</button>
       </div>
     </div>
     <div class="over-flow-panel">
@@ -23,27 +24,26 @@
         <div class="input">
           <div class="date-lable-input">
             <label class="heading-lable">Select Start Date : </label>
-            <input type="date" class="start-date-input" id="start-date-input" (change)="TDate()" [value]="this.DATA!=null?this.DATA['Start_Date']:''" #start_date>
+            <input type="text" class="responsive-input" id="Start_Date" placeholder="Enter Date" (change)="TDate()" [value]="this.DATA!=null && this.DATA['Start_Date']!=undefined?this.DATA['Start_Date']:'yyyy-mm-dd'" #start_date />
+            <!-- <input type="date" class="start-date-input" id="start-date-input" (change)="TDate()" [value]="this.DATA!=null?this.DATA['Start_Date']:''" #start_date> -->
           </div>
           <div class="date-lable-input">
             <label class="heading-lable">Select End Date : </label>
-            <input type="date" class="end-date-input" id="end-date-input" (change)="TDate()" [value]="this.DATA!=null?this.DATA['End_Date']:''" #end_date>
+            <input type="text" class="responsive-input" id="End_Date" placeholder="Enter Date" (change)="TDate()" [value]="this.DATA!=null && this.DATA['End_Date']!=undefined?this.DATA['End_Date']:'yyyy-mm-dd'" #end_date />
+            <!-- <input type="date" class="end-date-input" id="end-date-input" (change)="TDate()" [value]="this.DATA!=null?this.DATA['End_Date']:''" #end_date> -->
           </div>
           <div class="date-lable-input">
             <label class="heading-lable">Depot Name </label>
-            <input type="text" id="depot_Name" name="depot_Name" #depot_Name [value]="this.DATA!=null?this.DATA['Depot_Name']:'Select Option'" required>
+            <input type="text" id="depot_Name" name="depot_Name" #depot_Name [value]="this.DATA!=null && this.DATA['Depot_Name']!=undefined?this.DATA['Depot_Name']:'Select Option'" required>
           </div>
           <div class="date-lable-input">
             <label class="End-date-label">Select Option BAG/TON</label>
-            <select id="select_option_bag_ton" (change)="BagTon(select_option_bag_ton.value)" #select_option_bag_ton>
-                <option value="Bag" data-index="1">Bag</option>
-                <option value="Ton" data-index="20">Ton</option>
-            </select>
+            <input type="text" id="select_option_bag_ton" [value]="this.DATA!=null && this.DATA['Bag_Ton']!=undefined?this.DATA['Bag_Ton']:'Select Option'" #select_option_bag_ton required>
           </div>
         </div>
         <div class="button-div">
           <button class="inward-search-btn" (click)="LoadTableData($event,{Start_Date:start_date.value,
-            End_Date:end_date.value,Depot_Name:depot_Name.value})">Show</button>
+            End_Date:end_date.value,Depot_Name:depot_Name.value,Bag_Ton:select_option_bag_ton.value})">Show</button>
         </div>
       </div>
       <div class="show-select-value box-shadow">

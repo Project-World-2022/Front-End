@@ -5,6 +5,7 @@ import { ApiServiceService } from 'src/service/api-service.service';
 import { AutoCompletedInputService } from 'src/service/auto-completed-input.service';
 import { DataControllerService } from 'src/service/data-controller.service';
 import { ServiceService } from 'src/service/service.service';
+import { UICALENDERService } from 'src/service/ui-calender.service';
 import { ValidationService } from 'src/service/validation.service';
 declare var $: any;
 
@@ -23,7 +24,8 @@ export class StockSheetComponent implements OnInit {
     public Api_Service: ApiServiceService,
     private Validation: ValidationService,
     protected PreviewData: DataControllerService,
-    public DropDown: AutoCompletedInputService) {
+    public DropDown: AutoCompletedInputService,
+    public UI_CALENDER: UICALENDERService) {
     service.ALLDepotCode().then((res) => {
       this.r = res;
       this.DEPOT_NAME_CODE_OBJECT['Select Option'] = 'Select Option';
@@ -35,8 +37,8 @@ export class StockSheetComponent implements OnInit {
       this.DEPOT_ALL.sort();
       this.DATA = this.PreviewData.getData('StocksheetView_1');
       setTimeout(() => {
-        this.DropDown.DropDownShow('#select_option_bag_ton',['Bag','Ton']);
-        this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT);
+        this.DropDown.DropDownShow('#select_option_bag_ton',['Bag','Ton'],null);
+        this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT,null);
       },1000);
    });
    }
@@ -54,6 +56,7 @@ export class StockSheetComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.UI_CALENDER.datePicker('#Start_Date');
     setTimeout(() => {
       if (this.DATA != null && this.DATA != undefined) {
         $(`#depot-code-select option[value='${this.DATA['Depot_Name']}']`).attr("selected", "selected");

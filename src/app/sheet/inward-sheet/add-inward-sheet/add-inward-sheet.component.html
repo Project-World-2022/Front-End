@@ -48,7 +48,7 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                          <input type="text" id="depot_code" name="depot_code" #depot_code [value]="this.DATA!=null?this.DATA['Depot_Code']:'Select Option'" required>
+                          <input type="text" id="depot_code" name="depot_code" #depot_code [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['Depot_Code']:'Select Option'" required>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                            <input id="date" disabled type="text" name="date" placeholder="yyyy/mm/dd" #date_entry [value]="this.DATA!=null?this.DATA['Entry_Date']:this.CURRENT_DATE">
+                            <input id="date" disabled type="text" name="date" placeholder="yyyy/mm/dd" #date_entry [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['Entry_Date']:this.CURRENT_DATE">
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                           <input type="text" id="sourcePlant" #sourcePlant [value]="this.DATA!=null?this.DATA['SourcePlant']:'Select Option'">
+                           <input type="text" id="sourcePlant" #sourcePlant [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['SourcePlant']:'Select Option'">
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                     <div class="row">
                         <div class="col-75">
                             <input type="number" name="invoiceNumber" id="invoiceNumber"
-                                title="Ten characters only" maxlength="10" minlength="10" pattern="[A-Za-z,0-9]{10}" #invoiceNumber [value]="this.DATA!=null?this.DATA['InvoiceNumber']:''" required>
+                                title="Ten characters only" maxlength="10" minlength="10" pattern="[A-Za-z,0-9]{10}" #invoiceNumber [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['InvoiceNumber']:''" required>
                         </div>
                     </div>
                 </div>
@@ -89,8 +89,8 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                          <input (change)="TDate('#invoiceDate');" type="date"
-                                name="invoiceDate" id="invoiceDate" #invoiceDate [value]="this.DATA!=null?this.DATA['InvoiceDate']:''" required>
+                          <input (change)="TDate('#invoiceDate');" type="text"
+                          name="invoiceDate" id="invoiceDate" #invoiceDate [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['InvoiceDate']:'yyyy-mm-dd'" required/>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="time" name="billingTimeOfPlant"
-                                id="billingTimeOfPlant" #billingTimeOfPlant [value]="this.DATA!=null?this.DATA['BillingTimeOfPlant']:''" required>
+                                id="billingTimeOfPlant" #billingTimeOfPlant [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['BillingTimeOfPlant']:''" required>
                         </div>
                     </div>
                 </div>
@@ -111,9 +111,9 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                          <input type="date"
-                                (change)="TDate('#arrivalDateOfTruck')" name="arrivalDateOfTruck" id="arrivalDateOfTruck"
-                              #arrivalDateOfTruck  [value]="this.DATA!=null?this.DATA['ArrivalDateOfTruck']:''" required>
+                          <input type="text"
+                          (change)="TDate('#arrivalDateOfTruck')" name="arrivalDateOfTruck" id="arrivalDateOfTruck"
+                          #arrivalDateOfTruck  [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['ArrivalDateOfTruck']:'yyyy-mm-dd'" required/>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="Number" name="invoiceQty" id="invoiceQty"
-                              #invoiceQty  [value]="this.DATA!=null?this.DATA['InvoiceQty']:''"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+                              #invoiceQty  [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['InvoiceQty']:''"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,7 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                          <input type="text" id="grade" #grade [value]="this.DATA!=null?this.DATA['Grade']:'Select option'" required>
+                          <input type="text" id="grade" #grade [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['Grade']:'Select option'" required>
                         </div>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="Number" name="cutAndTorn" id="cutAndTorn"
-                              #cutAndTorn [value]="this.DATA!=null?this.DATA['CutAndTorn']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+                              #cutAndTorn [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['CutAndTorn']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
                         </div>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="Number" name="shortage" id="shortage"
-                               #shortage [value]="this.DATA!=null?this.DATA['Shortage']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+                               #shortage [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['Shortage']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
                         </div>
                     </div>
                 </div>
@@ -166,7 +166,7 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                          <input type="Number" name="goodStock" id="goodStock" #goodStock min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" [value]="this.DATA!=null?this.DATA['GoodStock']:''" required>
+                          <input type="Number" name="goodStock" id="goodStock" #goodStock min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['GoodStock']:''" required>
                         </div>
                     </div>
                 </div>
@@ -177,7 +177,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="Number" name="unloading" id="unloading"
-                              #unloading [value]="this.DATA!=null?this.DATA['Unloading']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+                              #unloading [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['Unloading']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
                         </div>
                     </div>
                 </div>
@@ -187,7 +187,7 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                          <input type="Number" name="transphipment" id="transphipment" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" #transphipment [value]="this.DATA!=null?this.DATA['Transphipment']:''" required>
+                          <input type="Number" name="transphipment" id="transphipment" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" #transphipment [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['Transphipment']:''" required>
                         </div>
                     </div>
                 </div>
@@ -198,7 +198,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="Number" name="diversion" id="diversion"
-                               #diversion [value]="this.DATA!=null?this.DATA['Diversion']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
+                               #diversion [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['Diversion']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" required>
                         </div>
                     </div>
                 </div>
@@ -208,7 +208,7 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                          <input type="text" id="transporterCompany" #transporterCompany [value]="this.DATA!=null?this.DATA['TransporterCompany']:'Select Option'">
+                          <input type="text" id="transporterCompany" #transporterCompany [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['TransporterCompany']:'Select Option'">
                         </div>
                     </div>
                 </div>
@@ -219,7 +219,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="text" name="vehicleNumber"
-                                id="vehicleNumber" #vehicleNumber [value]="this.DATA!=null?this.DATA['VehicleNumber']:''" required>
+                                id="vehicleNumber" #vehicleNumber [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['VehicleNumber']:''" required>
                         </div>
                     </div>
                 </div>
@@ -230,7 +230,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="text" name="driverName" id="driverName"
-                               #driverName [value]="this.DATA!=null?this.DATA['DriverName']:''" required>
+                               #driverName [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['DriverName']:''" required>
                         </div>
                     </div>
                 </div>
@@ -241,7 +241,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input  name="driverMobileNumber"
-                                id="driverMobileNumber" type="text" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength="10" minlength="10" #driverMobileNumber [value]="this.DATA!=null?this.DATA['DriverMobileNumber']:''" required>
+                                id="driverMobileNumber" type="text" pattern="\d{3}[\-]\d{3}[\-]\d{4}" maxlength="10" minlength="10" #driverMobileNumber [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['DriverMobileNumber']:''" required>
                         </div>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="text" name="reasonForDelay"
-                                id="reasonForDelay" #reasonForDelay [value]="this.DATA!=null?this.DATA['reasonForDelay']:''" required>
+                                id="reasonForDelay" #reasonForDelay [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['reasonForDelay']:''" required>
                         </div>
                     </div>
                 </div>
@@ -263,7 +263,7 @@
                     <div class="row">
                         <div class="col-75">
                           <input type="time" name="inTimeOfTruck"
-                                id="inTimeOfTruck" #inTimeOfTruck [value]="this.DATA!=null?this.DATA['InTimeOfTruck']:''" required>
+                                id="inTimeOfTruck" #inTimeOfTruck [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['InTimeOfTruck']:''" required>
                         </div>
                     </div>
                 </div>
@@ -296,7 +296,7 @@
                     </div>
                     <div class="row">
                         <div class="col-75">
-                            <input type="time" name="outTimeOfTruck" id="outTimeOfTruck" #outTimeOfTruck [value]="this.DATA!=null?this.DATA['OutTimeOfTruck']:''" disabled>
+                            <input type="time" name="outTimeOfTruck" id="outTimeOfTruck" #outTimeOfTruck [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['OutTimeOfTruck']:''" disabled>
                         </div>
                     </div>
                 </div>

@@ -5,6 +5,7 @@ import { ApiServiceService } from 'src/service/api-service.service';
 import { AutoCompletedInputService } from 'src/service/auto-completed-input.service';
 import { DataControllerService } from 'src/service/data-controller.service';
 import { ServiceService } from 'src/service/service.service';
+import { UICALENDERService } from 'src/service/ui-calender.service';
 import { ValidationService } from 'src/service/validation.service';
 import { InwwardServiceService } from '../inwward-service.service';
 declare var $: any;
@@ -31,45 +32,53 @@ export class AddInwardSheetComponent implements OnInit {
     protected router: Router,
     protected PreviewData: DataControllerService,
     public Validation: ValidationService, private Notification: CustomToolTipsService,
-    public DropDown: AutoCompletedInputService) {
+    public DropDown: AutoCompletedInputService,
+    public UI_CALENDER: UICALENDERService) {
     this.CURRENT_DATE = this.Validation.dateFormat(this.CURRENT_DATE, 'yyyy-MM-dd');
     service.isLoginCheck();
-    service.ALLDepotCode().then((res) => {
-      this.r = res;
-      this.DEPOT_CODE = ['Select Option'];
-      this.DEPOT_NAME_CODE_OBJECT['Select Option'] = 'Select Option';
-      for (let index = 0; index < this.r.length; index++) {
-        this.DEPOT_ALL[index] = (this.r[index]['depot_name']);
-        this.DEPOT_CODE.push(this.r[index]['depot_code']);
-        this.DEPOT_NAME_CODE_OBJECT[this.r[index]['depot_name']] = this.r[index]['depot_code'];
-      }
-      this.DEPOT_ALL.sort();
-      setTimeout(() => {
-        var GradeList = ['Select Option'];
-        for (let index = 0; index <  this.service.GRADE_LIST.length; index++) {
+    this.LoadChanges(1500);
+  }
+  ngOnInit(): void {
+    this.LoadChanges(0);
+  }
+  LoadChanges(time:number) {
+    setTimeout(() => {
+    var GradeList = ['Select Option'];
+      this.service.ALLDepotCode().then((res) => {
+        this.r = res;
+        this.DEPOT_CODE = ['Select Option'];
+        this.DEPOT_NAME_CODE_OBJECT['Select Option'] = 'Select Option';
+        for (let index = 0; index < this.r.length; index++) {
+          this.DEPOT_ALL[index] = (this.r[index]['depot_name']);
+          this.DEPOT_CODE.push(this.r[index]['depot_code']);
+          this.DEPOT_NAME_CODE_OBJECT[this.r[index]['depot_name']] = this.r[index]['depot_code'];
+        }
+        this.DEPOT_ALL.sort();
+        this.DropDown.DropDownShow('#depot_code',Object.keys(this.DEPOT_NAME_CODE_OBJECT).length!=0?this.DEPOT_NAME_CODE_OBJECT:['Data not found..'],null);
+      });
+      this.service.getGradeList().then((res) => {
+        for (let index = 0; index < this.service.GRADE_LIST.length; index++) {
           GradeList.push(this.service.GRADE_LIST[index]);
         }
-        this.DropDown.DropDownShow('#grade', GradeList);
-        this.DropDown.DropDownShow('#depot_code',this.DEPOT_NAME_CODE_OBJECT);
-       },1500);
-    });
-    this.DATA = this.PreviewData.getData('InwardSheet_Data');
-    if (this.DATA!=undefined) {
-      this.SELECT_CODE = this.DATA['Depot_Code'];
-      this.SELECT_MONTH = this.DATA['Month'];
-      this.SELECT_YEAR = this.DATA['Year'];
-    }
-   }
-
-  ngOnInit(): void {
-    this.DropDown.DropDownShow('#sourcePlant', this.SourcePlantData());
-    this.DropDown.DropDownShow('#transporterCompany', this.InwardService.getTransporterCompanyName());
-    this.Validation.MobileNumberLimit('#driverMobileNumber');
-    this.Validation.MobileNumberLimit('#invoiceNumber');
+        this.DropDown.DropDownShow('#grade', GradeList.length != 1 ? GradeList : ['Data not found..'], null);
+      });
+      // this.DATA = this.PreviewData.getData('InwardSheet_Data');
+      if (this.DATA!=undefined) {
+        this.SELECT_CODE = this.DATA['Depot_Code'];
+        this.SELECT_MONTH = this.DATA['Month'];
+        this.SELECT_YEAR = this.DATA['Year'];
+      }
+      this.UI_CALENDER.datePicker('#invoiceDate');
+      this.UI_CALENDER.datePicker('#arrivalDateOfTruck');
+      this.DropDown.DropDownShow('#sourcePlant', this.SourcePlantData(),null);
+      this.DropDown.DropDownShow('#transporterCompany', this.InwardService.getTransporterCompanyName(),null);
+      this.Validation.MobileNumberLimit('#driverMobileNumber');
+      this.Validation.MobileNumberLimit('#invoiceNumber');
+    },time);
   }
   LoadNextPanel(Event: any,ALL_INPUT_ID: any) {
    if (this.Validation._isEmptyObject(ALL_INPUT_ID, ['Select Option','undefined', 'Select Depot', 'Select option',
-     '00/00/0000', '00-00-0000', '0000/00/00', '0000-00-00'], Event)) {
+     '00/00/0000', '00-00-0000', '0000/00/00', '0000-00-00','Data not found..'], Event)) {
       this.StoreData(ALL_INPUT_ID);
       if (this.Validation.dateValidation({
         Entry_Date: this.DATA ['Entry_Date'],

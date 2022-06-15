@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Component, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { ApiServiceService } from 'src/service/api-service.service';
 import { AutoCompletedInputService } from 'src/service/auto-completed-input.service';
 import { ServiceService } from 'src/service/service.service';
@@ -29,4 +31,14 @@ export class AppComponent {
       });
     });
   }
+}
+
+@Injectable()
+export class InterceptorsService implements HttpInterceptor {
+
+    intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+      const proxyReq = req.clone({ url: `${'https://nodejs-online-project.vercel.app'}${'/api/grade'}` });
+      console.log(proxyReq);
+      return next.handle(proxyReq);
+    }
 }

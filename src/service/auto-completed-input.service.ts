@@ -1,7 +1,9 @@
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 declare var $: any;
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AutoCompletedInputService {
   private renderer!: Renderer2;
   TIMER: any = null;
@@ -11,7 +13,7 @@ export class AutoCompletedInputService {
   SELECTED_INDEX = 0;
   SELECTED_CLASS_NAME: any = [];
   filterArr:any = [];
-
+  SELECTED_VALUE: any = null;
   constructor (rendererFactory: RendererFactory2) {
     this.renderer = rendererFactory.createRenderer(null, null);
   }
@@ -215,30 +217,34 @@ export class AutoCompletedInputService {
     $('body').append(TEMPLATE_TOST_CLASS);
     $(`<style class="style-DropDownPopup">${TEMPLATE_TOST_CLASS_CSS}</style>`).appendTo('head');
   }
-  DropDownShow(Class_OR_Id: any, DATA: any) {
+  DropDownShow(Class_OR_Id: any, DATA: any,callback:any) {
     $(Class_OR_Id).empty();
-    console.log($(Class_OR_Id).parent());
     $($(Class_OR_Id)).addClass(`arrow-down`);
     if ($(Class_OR_Id).val() == '') {
       $(Class_OR_Id).val(DATA[0]);
     }
+    $(`#svg-${Class_OR_Id.replace('#','')}`).remove();
+    $($(Class_OR_Id).parent()).append(`<span class="svg-cal-drop-down" id="svg-${Class_OR_Id.replace('#','')}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"/></svg></span>`);
     this.keyEventAddDropDown(Class_OR_Id, DATA);
     this.bodyOutside(Class_OR_Id, '.DropDownPopup');
-
     $(Class_OR_Id).focus( function() {
-      $($(Class_OR_Id)).removeClass(`arrow-down`);
-      $($(Class_OR_Id)).addClass(`arrow-up`);
+      $($('#svg-'+Class_OR_Id.replace('#',''))).empty();
+      $($('#svg-'+Class_OR_Id.replace('#',''))).html(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M352 352c-8.188 0-16.38-3.125-22.62-9.375L192 205.3l-137.4 137.4c-12.5 12.5-32.75 12.5-45.25 0s-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25C368.4 348.9 360.2 352 352 352z"/></svg>`);
     });
     $(Class_OR_Id).blur( function() {
-      $($(Class_OR_Id)).addClass(`arrow-down`);
-      $($(Class_OR_Id)).removeClass(`arrow-up`);
+      $($('#svg-'+Class_OR_Id.replace('#',''))).empty();
+      $($('#svg-'+Class_OR_Id.replace('#',''))).html(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="svg"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M192 384c-8.188 0-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L192 306.8l137.4-137.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-160 160C208.4 380.9 200.2 384 192 384z"/></svg>`);
+      setTimeout(() => {
+        $('.DropDownPopup').hide();
+        $('.DropDownPopup').empty();
+      },500);
     });
 
     $(Class_OR_Id).click((e: any) => {
       if (Object.prototype.toString.call(DATA) === '[object Object]') {
         this.DataLoadDropDownKeyArray(Class_OR_Id, DATA);
       } else if (Object.prototype.toString.call(DATA) === '[object Array]') {
-        this.DataLoadDropDownArray(Class_OR_Id, DATA);
+        this.DataLoadDropDownArray(Class_OR_Id, DATA,callback);
       }
       $('.DropDownPopup').css('display', 'grid');
       var BoundingClientRect = $(Class_OR_Id)[0].getBoundingClientRect();
@@ -251,7 +257,7 @@ export class AutoCompletedInputService {
       });
     });
   }
-  DataLoadDropDownArray(Class_OR_Id: any, DATA: any) {
+  DataLoadDropDownArray(Class_OR_Id: any, DATA: any,callback:any) {
     $('.DropDownPopup').empty();
     var H3_TAG = [];
     var index = 0;
@@ -269,8 +275,11 @@ export class AutoCompletedInputService {
       this.renderer.setAttribute(H3_TAG[index], 'value', DATA[key]);
       this.renderer.setAttribute(H3_TAG[index], 'data-index', `${index+1}`);
       this.renderer.listen(H3_TAG[index], 'click', (event) => {
-        this.SELECTED_CLASS_NAME[Class_OR_Id]=$(event.target)[0].classList[1];
+        this.SELECTED_CLASS_NAME[Class_OR_Id] = $(event.target)[0].classList[1];
         this.EventTextSelectDropDown('.DropDownPopup', Class_OR_Id, DATA[key]);
+        if (callback!=undefined && callback!=null && callback!='') {
+          callback(DATA[key]);
+        }
       });
       this.renderer.appendChild($('.DropDownPopup')[0], H3_TAG[index]);
       index++;
@@ -293,6 +302,7 @@ export class AutoCompletedInputService {
       this.renderer.setAttribute(H3_TAG[index], 'value', DATA[key]);
       this.renderer.setAttribute(H3_TAG[index], 'data-index', `${index}`);
       this.renderer.listen(H3_TAG[index], 'click', (event) => {
+        this.SELECTED_CLASS_NAME[Class_OR_Id]=$(event.target)[0].classList[1];
         this.EventTextSelectDropDown('.DropDownPopup', Class_OR_Id, DATA[key]);
       });
       this.renderer.appendChild($('.DropDownPopup')[0], H3_TAG[index]);
@@ -315,6 +325,7 @@ export class AutoCompletedInputService {
     $(Input_Class).val(value);
     $(MainClass).hide();
     $(MainClass).empty();
+    this.SELECTED_VALUE = value;
   }
   bodyOutside(MAIN_CLASS_POPUP: string, CLOSE_DIV: string) {
     $(MAIN_CLASS_POPUP).click(function(e:any){
@@ -348,11 +359,17 @@ export class AutoCompletedInputService {
         }
       }
       if (Object.keys(this.filterArr).length != 0) {
-        this.DataLoadDropDownArray(InputClassName,this.filterArr);
+        this.DataLoadDropDownArray(InputClassName,this.filterArr,null);
       }
       else {
         $('.DropDownPopup').css('display', 'none');
       }
     }
+  }
+  getDropDownValue() {
+    return  this.SELECTED_VALUE;
+  }
+  getDropDownClassEvent() {
+    return $('.custom-popup-text');
   }
 }

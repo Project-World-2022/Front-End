@@ -1,7 +1,9 @@
 body{
   background-color: transparent !important;
 }
-
+.table-panel-controller {
+  max-height: 78vh;
+}
 .table-panel-controller .TableBody {
   width: 100%;
   display: contents;

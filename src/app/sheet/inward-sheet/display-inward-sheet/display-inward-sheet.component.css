@@ -27,7 +27,6 @@
   display: flex;
   gap: 20px;
   padding-left: 30px;
-  padding-bottom: 10px;
 }
 
 .left-padding{
@@ -52,6 +51,9 @@
 }
 
 .input .date-lable-input {
-  flex-basis: 22%;
+  flex-basis: 30%;
   margin-left: 0;
+}
+.button-Add-Reset {
+  width: 20%;
 }

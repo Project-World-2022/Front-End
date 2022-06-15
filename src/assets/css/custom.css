@@ -67,10 +67,11 @@
 
 .dashboard-logo {
   width: 40px;
-  margin-right: 10px;
+  margin-right: 10px !important;
   background: #fff;
-  padding: 5px 3px;
+  padding: 5px 3px !important;
   border-radius: 3px;
+  margin-left: 20px !important;
 }
 
 .login-dropdown .dropdown-toggle {

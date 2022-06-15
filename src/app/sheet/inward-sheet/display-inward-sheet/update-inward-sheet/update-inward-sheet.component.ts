@@ -6,6 +6,7 @@ import { ApiServiceService } from 'src/service/api-service.service';
 import { AutoCompletedInputService } from 'src/service/auto-completed-input.service';
 import { DataControllerService } from 'src/service/data-controller.service';
 import { ServiceService } from 'src/service/service.service';
+import { UICALENDERService } from 'src/service/ui-calender.service';
 import { ValidationService } from 'src/service/validation.service';
 import { InwwardServiceService } from '../../inwward-service.service';
 declare var $: any;
@@ -33,9 +34,14 @@ export class UpdateInwardSheetComponent implements OnInit {
     private Validation: ValidationService,
     private Notification: CustomToolTipsService,
     private notifyService: NotificationService,
-    public DropDown: AutoCompletedInputService) {
+    public DropDown: AutoCompletedInputService,
+    public UI_CALENDER: UICALENDERService) {
       service.isLoginCheck();
-      service.ALLDepotCode().then((res) => {
+    this.OnLoadView(1500);
+  }
+  OnLoadView(time:any) {
+    setTimeout(() => {
+      this.service.ALLDepotCode().then((res) => {
         this.r = res;
         this.DEPOT_NAME_CODE_OBJECT['Select Option'] = 'Select Option';
         for (let index = 0; index < this.r.length; index++) {
@@ -51,8 +57,8 @@ export class UpdateInwardSheetComponent implements OnInit {
             for (let index = 0; index <  this.service.GRADE_LIST.length; index++) {
               GradeList.push(this.service.GRADE_LIST[index]);
             }
-            this.DropDown.DropDownShow('#grade', GradeList);
-            this.DropDown.DropDownShow('#depot_code', this.DEPOT_NAME_CODE_OBJECT);
+            this.DropDown.DropDownShow('#grade', GradeList,null);
+            this.DropDown.DropDownShow('#depot_code', this.DEPOT_NAME_CODE_OBJECT,null);
 
             if ($("#outTimeOfTruck").val() != "") {
               var datediff = this.dateDiff($("#arrivalDateOfTruck").val(), $("#entryDate").val());
@@ -71,13 +77,17 @@ export class UpdateInwardSheetComponent implements OnInit {
           },1500);
         }
       });
+      this.UI_CALENDER.datePicker('#invoiceDate');
+      this.UI_CALENDER.datePicker('#arrivalDateOfTruck');
+      this.UI_CALENDER.datePicker('#clearDateOfTruck');
+      this.DropDown.DropDownShow('#sourcePlant', this.SourcePlantData(),null);
+      this.DropDown.DropDownShow('#transporterCompany', this.InwardService.getTransporterCompanyName(),null);
+      this.Validation.MobileNumberLimit('#driverMobileNumber');
+      this.Validation.MobileNumberLimit('#invoiceNumber');
+    }, time);
   }
-
   ngOnInit(): void {
-    this.DropDown.DropDownShow('#sourcePlant', this.SourcePlantData());
-    this.DropDown.DropDownShow('#transporterCompany', this.InwardService.getTransporterCompanyName());
-    this.Validation.MobileNumberLimit('#driverMobileNumber');
-    this.Validation.MobileNumberLimit('#invoiceNumber');
+    this.OnLoadView(0);
   }
   SumbitData(event: any, data: any) {
     var ALL_DATA_INPUT = data;

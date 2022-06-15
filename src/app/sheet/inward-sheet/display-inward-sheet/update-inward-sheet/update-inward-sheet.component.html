@@ -21,7 +21,7 @@
         </div>
         <div class="row">
           <div class="col-25">
-            <input type="text" id="depot_code" name="depot_code" #depot_code [value]="this.DATA!=null?this.DATA['depot_code']:'Select Option'" required>
+            <input type="text" id="depot_code" name="depot_code" #depot_code [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['depot_code']:'Select Option'" required>
           </div>
         </div>
       </div>
@@ -31,7 +31,7 @@
         </div>
         <div class="row">
           <div class="col-25">
-            <input  id="entryDate" type="text" name="date" #date_entry [value]="this.DATA!=null?this.DATA['entryDate']:''">
+            <input  id="entryDate" type="text" name="date" #date_entry [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['entryDate']:''">
           </div>
         </div>
       </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="row">
           <div class="col-25">
-           <input type="text" id="sourcePlant" #sourcePlant [value]="this.DATA!=null?this.DATA['particulars']:''" required>
+           <input type="text" id="sourcePlant" #sourcePlant [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['particulars']:''" required>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="text"  name="invoiceNumber" id="invoiceNumber" title="Ten characters only" maxlength="10" minlength="10"
-              pattern="[A-Za-z,0-9]{10}" #invoiceNumber [value]="this.DATA!=null?this.DATA['invoiceNumber']:''"
+              pattern="[A-Za-z,0-9]{10}" #invoiceNumber [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['invoiceNumber']:''"
               required>
           </div>
         </div>
@@ -66,7 +66,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="text"  name="invoiceDate"
-              id="invoiceDate" #invoiceDate [value]="this.DATA!=null?this.DATA['invoiceDate']:''" required>
+              id="invoiceDate" #invoiceDate [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['invoiceDate']:''" required>
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="text"  name="billingTimeOfPlant" id="billingTimeOfPlant"
-              #billingTimeOfPlant [value]="this.DATA!=null?this.DATA['billingtimeofplant']:''" required>
+              #billingTimeOfPlant [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['billingtimeofplant']:''" required>
           </div>
         </div>
       </div>
@@ -88,7 +88,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="text"  name="arrivalDateOfTruck"
-              id="arrivalDateOfTruck" #arrivalDateOfTruck [value]="this.DATA!=null?this.DATA['arrivalDateOfTruck']:''" required>
+              id="arrivalDateOfTruck" #arrivalDateOfTruck [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['arrivalDateOfTruck']:''" required>
           </div>
         </div>
       </div>
@@ -99,7 +99,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="Number"  name="invoiceQty" id="invoiceQty"
-            [value]="this.DATA!=null?this.DATA['invoiceQty']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['invoiceQty']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
             #invoiceQty required>
           </div>
         </div>
@@ -110,7 +110,7 @@
         </div>
         <div class="row">
           <div class="col-25">
-            <input type="text" id="grade" #grade [value]="this.DATA!=null?this.DATA['grade']:'Select option'" required>
+            <input type="text" id="grade" #grade [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['grade']:'Select option'" required>
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="Number"  name="cutAndTorn" id="cutAndTorn"
-            [value]="this.DATA!=null?this.DATA['cutAndTorn']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['cutAndTorn']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
             #cutAndTorn required>
           </div>
         </div>
@@ -133,7 +133,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="Number"  name="shortage" id="shortage"
-            [value]="this.DATA!=null?this.DATA['shortage']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['shortage']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
             #shortage required>
           </div>
         </div>
@@ -145,7 +145,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="Number"  name="goodStock" id="goodStock"
-            [value]="this.DATA!=null?this.DATA['goodStock']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['goodStock']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
             #goodStock required>
           </div>
         </div>
@@ -157,7 +157,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="Number"  name="unloading" id="unloading"
-            [value]="this.DATA!=null?this.DATA['unloading']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['unloading']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
             #unloading required>
           </div>
         </div>
@@ -169,7 +169,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="Number"  name="transphipment" id="transphipment"
-            [value]="this.DATA!=null?this.DATA['transphipment']:''"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['transphipment']:''"  min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
               #transphipment required>
           </div>
         </div>
@@ -181,7 +181,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="Number"  name="diversion" id="diversion"
-            [value]="this.DATA!=null?this.DATA['diversion']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['diversion']:''" min="0" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57"
             #diversion required>
           </div>
         </div>
@@ -192,7 +192,7 @@
         </div>
         <div class="row">
           <div class="col-25">
-            <input type="text" id="transporterCompany" #transporterCompany [value]="this.DATA!=null?this.DATA['transporterCompany']:''">
+            <input type="text" id="transporterCompany" #transporterCompany [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['transporterCompany']:''">
           </div>
         </div>
       </div>
@@ -203,7 +203,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="text"  name="vehicleNumber"
-            [value]="this.DATA!=null?this.DATA['vehicleNumber']:''"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['vehicleNumber']:''"
             id="vehicleNumber" #vehicleNumber required>
           </div>
         </div>
@@ -215,7 +215,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="text"  name="driverName"
-            [value]="this.DATA!=null?this.DATA['driverName']:''"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['driverName']:''"
             id="driverName" #driverName required>
           </div>
         </div>
@@ -227,7 +227,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="phone"  name="driverMobileNumber"
-            [value]="this.DATA!=null?this.DATA['driverMobileNumber']:''"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['driverMobileNumber']:''"
             id="driverMobileNumber" maxlength="10" min="10" pattern="[1-9]{1}[0-9]{9}" #driverMobileNumber required>
           </div>
         </div>
@@ -239,7 +239,7 @@
         <div class="row">
           <div class="col-25">
             <input  type="text"  name="reasonForDelay"
-            [value]="this.DATA!=null?this.DATA['reasonForDelay']:''"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['reasonForDelay']:''"
             id="reasonForDelay" #reasonForDelay required>
           </div>
         </div>
@@ -250,8 +250,8 @@
         </div>
         <div class="row">
           <div class="col-25">
-            <input  type="text"  name="inTimeOfTruck"
-            [value]="this.DATA!=null?this.DATA['inTimeOfTruck']:''"
+            <input  type="time"  name="inTimeOfTruck"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['inTimeOfTruck']:''"
             id="inTimeOfTruck" #inTimeOfTruck required>
           </div>
         </div>
@@ -262,8 +262,8 @@
         </div>
         <div class="row">
           <div class="col-25">
-            <input  type="text"  name="outTimeOfTruck"
-            [value]="this.DATA!=null?this.DATA['outTimeOfTruck']:''"
+            <input  type="time"  name="outTimeOfTruck"
+            [value]="this.DATA!=null && this.DATA.length!=0?this.DATA['outTimeOfTruck']:''"
             id="outTimeOfTruck" #outTimeOfTruck >
           </div>
         </div>

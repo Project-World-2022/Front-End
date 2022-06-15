@@ -39,9 +39,9 @@ export class NewStockSheetComponent implements OnInit {
       this.DEPOT_ALL.sort();
       this.DATA = this.PreviewData.getData('NewStocksheetView_1');
       setTimeout(() => {
-        this.DropDown.DropDownShow('#select_option_bag_ton', ['Bag', 'Ton']);
-        this.DropDown.DropDownShow('#selectoptiondataview',['Select View','All','Depot Name']);
-        this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT);
+        this.DropDown.DropDownShow('#select_option_bag_ton', ['Bag', 'Ton'],null);
+        this.DropDown.DropDownShow('#selectoptiondataview',['Select View','All','Depot Name'],null);
+        this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT,null);
       },1000);
    });
    }

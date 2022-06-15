@@ -50,3 +50,12 @@
 .show-select-value {
   min-height: 80px !important;
 }
+
+.input {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.button-Add-Reset {
+  width: 20%;
+}

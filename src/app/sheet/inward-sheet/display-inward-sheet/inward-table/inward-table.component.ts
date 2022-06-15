@@ -3,8 +3,6 @@ import { Router } from '@angular/router';
 import { NotificationService } from 'src/app/notification.service';
 import { DataControllerService } from 'src/service/data-controller.service';
 import { ServiceService } from 'src/service/service.service';
-declare var jsPDF: any;
-declare var $: any;
 
 @Component({
   selector: 'app-inward-table',
@@ -21,29 +19,7 @@ export class InwardTableComponent implements OnInit {
   ngOnInit(): void {
 
   }
-  public openPDF(Type: any): void {
-    if (Type=='.pdf') {
-      $("#OUTER_TABLE").tableHTMLExport({
-        type: 'pdf',
-        filename: 'sample.pdf',
-        orientation:'pt'
-      });
-    } else if (Type=='.xls') {
 
-    }
-    else if (Type=='.json') {
-      $("#OUTER_TABLE").tableHTMLExport({
-        type: 'json',
-        filename: 'sample.json'
-    });
-    }
-    else if (Type=='.csv') {
-      $("#OUTER_TABLE").tableHTMLExport({
-        type: 'csv',
-        filename: 'sample.csv'
-    });
-    }
-}
   Update(data: any) {
     if (this.service.INWARD_DATA != null && this.service.INWARD_DATA != undefined) {
       var id = parseInt(data.id);

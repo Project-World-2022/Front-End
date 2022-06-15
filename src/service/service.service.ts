@@ -283,10 +283,14 @@ export class ServiceService {
     return this.islogged;
   }
   getGradeList() {
-   return this.http.get<any>(`${environment.baseUrl + 'Grade'}`).subscribe((res) => {
+   return new Promise((resolve,reject) => {
+    this.http.get<any>(`${environment.baseUrl + 'Grade'}`).subscribe((res) => {
       this.GRADE_LIST = res['Grade_List'];
+      resolve(res['Grade_List']);
     }, err => {
       this.notifyService.showError(err['message'], err['statusText']);
+      resolve([err]);
+    });
     });
   }
   getMonthYear(date:string) {

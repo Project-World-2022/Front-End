@@ -40,9 +40,9 @@ export class TableView1Component implements OnInit {
         }
         this.DEPOT_ALL.sort();
         setTimeout(() => {
-          this.DropDown.DropDownShow('#select_option_bag_ton',['Bag','Ton']);
-          this.DropDown.DropDownShow('#select_year', this.Api_Service.getYearList());
-          this.DropDown.DropDownShow('#select_month',this.Api_Service.getMonthList());
+          this.DropDown.DropDownShow('#select_option_bag_ton',['Bag','Ton'],null);
+          this.DropDown.DropDownShow('#select_year', this.Api_Service.getYearList(),null);
+          this.DropDown.DropDownShow('#select_month',this.Api_Service.getMonthList(),null);
         },1000);
       });
   }

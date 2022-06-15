@@ -33,8 +33,8 @@ export class LabourReportComponent implements OnInit {
       }
       this.DEPOT_ALL.sort();
       setTimeout(() => {
-        this.DropDown.DropDownShow('#select_option_bag_ton',['Bag','Ton']);
-        this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT);
+        this.DropDown.DropDownShow('#select_option_bag_ton',['Bag','Ton'],null);
+        this.DropDown.DropDownShow('#depot_Name', this.DEPOT_NAME_CODE_OBJECT,null);
       },1000);
    });
    }
